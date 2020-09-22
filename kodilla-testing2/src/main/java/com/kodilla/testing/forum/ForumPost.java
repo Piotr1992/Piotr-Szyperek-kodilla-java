@@ -9,14 +9,6 @@ public class ForumPost {
         this.author = author;
     }
 
-    @Override
-    public String toString() {
-        return "ForumPost{" +
-                "postBody='" + postBody + '\'' +
-                ", author='" + author + '\'' +
-                '}';
-    }
-
     public String getPostBody() {
         return postBody;
     }

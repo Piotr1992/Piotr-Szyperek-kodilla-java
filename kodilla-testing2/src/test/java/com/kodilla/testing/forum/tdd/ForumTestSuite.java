@@ -1,72 +1,36 @@
-package com.kodilla.testing.forum;
+package com.kodilla.testing.forum.tdd;
 
+import com.kodilla.testing.forum.ForumComment;
+import com.kodilla.testing.forum.ForumPost;
+
+import com.kodilla.testing.forum.ForumUser;
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ForumUser {
-    private String name;
-    private String realName;
-    private List<ForumPost> posts = new ArrayList<>();
-    //private List<ForumComment> comments = new LinkedList<>();
+@DisplayName("TDD: Forum Test Suite \uD83D\uDE31")
+class ForumTestSuite {
 
-    public ForumUser(String name, String realName) {
-        //name visible on forum
-        this.name = name;
-        //real name of the user
-        this.realName = realName;
+    private static int testCounter = 0;
+
+    @BeforeAll
+    public static void beforeAllTests() {
+        System.out.println("This is the beginning of tests.");
     }
 
-    public void addPost(String author, String postBody){
-        // do nothing
+    @AfterAll
+    public static void afterAllTests() {
+        System.out.println("All tests are finished.");
     }
 
-    public void addComment(ForumPost thePost, String author, String commentBody){
-        // do nothing
-    }
-
-    public int getPostsQuantity(){
-        // return 100 temporarily
-        return 100;
-    }
-
-    public int getCommentsQuantity(){
-        // return 100 temporarily
-        return 100;
-    }
-
-    public ForumPost getPost(int postNumber){
-        // returning null means that the operation was unsuccessful
-        return null;
-    }
-
-/*    public ForumComment getComment(int commentNumber){
-        // returning null means that the operation was unsuccessful
-        return null;
-    }       */
-
-    public boolean removePost(ForumPost thePost){
-        // return true temporarily
-        return true;
-    }
-
-/*    public boolean removeComment(ForumComment theComment){
-        // return true temporarily
-        return true;
-    }       */
-
-    public String getName() {
-        return name;
-    }
-
-    public String getRealName() {
-        return realName;
+    @BeforeEach
+    public void beforeEveryTest() {
+        testCounter++;
+        System.out.println("Preparing to execute test #" + testCounter);
     }
 
     @Test
-    private void testAddPost() {
+    void testAddPost() {
         //Given
         ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
 
@@ -75,7 +39,7 @@ public class ForumUser {
                 "Hello everyone, this is my first contribution here!");
 
         //Then
-        Assertions.assertEquals(1, forumUser.getPostsQuantity());
+        assertEquals(1, forumUser.getPostsQuantity());
     }
 
     @Test
@@ -89,7 +53,7 @@ public class ForumUser {
         forumUser.addComment(thePost, "mrsmith", "Thank you for all good words!");
 
         //Then
-        Assertions.assertEquals(1, forumUser.getCommentsQuantity());
+        assertEquals(1, forumUser.getCommentsQuantity());
     }
 
     @Test
@@ -105,7 +69,7 @@ public class ForumUser {
         retrievedPost = forumUser.getPost(0);
 
         //Then
-        Assertions.assertEquals(thePost, retrievedPost);
+        assertEquals(thePost, retrievedPost);
     }
 
     @Test
@@ -114,7 +78,7 @@ public class ForumUser {
         ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
         ForumPost thePost = new ForumPost("Hello everyone, " +
                 "this is my first contribution here!", "mrsmith");
-/*        ForumComment theComment = new ForumComment(thePost, "commentBody",
+        ForumComment theComment = new ForumComment(thePost, "mrsmith",
                 "Thank you for all good words!");
         forumUser.addComment(thePost, theComment.getAuthor(),
                 theComment.getCommentBody());
@@ -123,9 +87,8 @@ public class ForumUser {
         ForumComment retrievedComment = forumUser.getComment(0);
 
         //Then
-        Assertions.assertEquals(theComment, retrievedComment);          */
+        assertEquals(theComment, retrievedComment);
     }
-
 
     @Test
     void testRemovePostNotExisting() {
@@ -147,16 +110,15 @@ public class ForumUser {
         ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
         ForumPost thePost = new ForumPost("Hello everyone, " +
                 "this is my first contribution here!", "mrsmith");
-/*        ForumComment theComment = new ForumComment(thePost, "mrsmith",
+        ForumComment theComment = new ForumComment(thePost, "mrsmith",
                 "Thank you for all good words!");
 
         //When
         boolean result = forumUser.removeComment(theComment);
 
         //Then
-        Assertions.assertFalse(result);             */
+        Assertions.assertFalse(result);
     }
-
 
     @Test
     void testRemovePost() {
@@ -171,7 +133,7 @@ public class ForumUser {
 
         //Then
         Assertions.assertTrue(result);
-        Assertions.assertEquals(0, forumUser.getPostsQuantity());
+        assertEquals(0, forumUser.getPostsQuantity());
     }
 
     @Test
@@ -180,7 +142,7 @@ public class ForumUser {
         ForumUser forumUser = new ForumUser("mrsmith", "John Smith");
         ForumPost thePost = new ForumPost("Hello everyone, " +
                 "this is my first contribution here!", "mrsmith");
-/*        ForumComment theComment = new ForumComment(thePost, "mrsmith",
+        ForumComment theComment = new ForumComment(thePost, "mrsmith",
                 "Thank you for all good words!");
         forumUser.addComment(thePost, theComment.getAuthor(),
                 theComment.getCommentBody());
@@ -189,7 +151,8 @@ public class ForumUser {
         boolean result = forumUser.removeComment(theComment);
 
         //Then
-        Assertions.assertTrue(result);                      */
-        Assertions.assertEquals(0, forumUser.getCommentsQuantity());
+        Assertions.assertTrue(result);
+        assertEquals(0, forumUser.getCommentsQuantity());
     }
+
 }
