@@ -2,3 +2,4 @@
 "# Piotr-Szyperek-kodilla-java" 
 "# Task 3 - Module 6.3, first tests" 
 "# Task 4 - Modulo 6.4 JUnit" 
+"# Task 5 - Modulo 6.5 Mockito, Rebuild WeatherForecastTestSuite" 
