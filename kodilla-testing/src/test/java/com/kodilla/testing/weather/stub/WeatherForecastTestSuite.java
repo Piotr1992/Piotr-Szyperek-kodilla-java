@@ -1,4 +1,5 @@
-package com.kodilla.testing.weather.mock;
+
+package com.kodilla.testing.weather.stub;
 
 import com.kodilla.testing.weather.stub.Temperatures;
 import com.kodilla.testing.weather.stub.WeatherForecast;
@@ -7,12 +8,9 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import java.util.*;
-
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -20,22 +18,22 @@ class WeatherForecastTestSuite {
 
     @BeforeAll
     public static void beforeAll() {
-        System.out.println("beforeAll: begin");
+        System.out.println("beforeAll");
     }
 
     @AfterAll
     public static void afterAll() {
-        System.out.println("afterAll: begin");
+        System.out.println("afterAll");
     }
 
     @BeforeEach
     public void before(){
-        System.out.println("before: begin");
+        System.out.println("before");
     }
 
     @AfterEach
     public void after(){
-        System.out.println("after: begin");
+        System.out.println("after");
     }
 
     @Mock
@@ -84,7 +82,7 @@ class WeatherForecastTestSuite {
         }
 
         //Then
-        double averageTemperature = sumTemperatures / temperaturesMap.size();
+        double averageTemperature = sumTemperatures / quantityOfSensors;
         Assertions.assertEquals(25.56, averageTemperature);
     }
 
@@ -119,8 +117,7 @@ class WeatherForecastTestSuite {
         double median = 0;
         if ( quantityOfSensors % 2 == 0 ) {
             median = ( ( tabTemperatures[half-1] + tabTemperatures[half] ) / 2 );
-        }
-        else if ( quantityOfSensors % 2 == 1 ) {
+        } else {
             median = ( tabTemperatures[half] / 2 );
         }
         Assertions.assertEquals(13.05, median);
