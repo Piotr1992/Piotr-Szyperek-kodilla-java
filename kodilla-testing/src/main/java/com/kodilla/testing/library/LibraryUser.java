@@ -1,5 +1,7 @@
 package com.kodilla.testing.library;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class LibraryUser {
@@ -53,4 +55,5 @@ public class LibraryUser {
     public int hashCode() {
         return Objects.hash(firstname, lastname, peselId);
     }
+
 }
