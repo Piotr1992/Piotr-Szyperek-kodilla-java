@@ -23,20 +23,9 @@ public class BookLibrary {
     }
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
-        List<Book> borrowedBooksList = new ArrayList<Book>();
 
-        if( libraryUser.getFirstname() == "NameOneBooks" && libraryUser.getLastname() == "SurnameOneBooks" && libraryUser.getPeselId() == "910602567890" ) {
-            borrowedBooksList.add( new Book("SQL", "Ben Forta", 2005) );
-        }
-        else if( libraryUser.getFirstname() == "NameFiveBooks" && libraryUser.getLastname() == "SurnameFiveBooks" && libraryUser.getPeselId() == "910904123987" ) {
-            borrowedBooksList.add( new Book("Ogniem i mieczem", "Henryk Sienkiewicz", 1884) );
-            borrowedBooksList.add( new Book("Potop", "Henryk Sienkiewicz", 1886) );
-            borrowedBooksList.add( new Book("Pan Wołodyjowski", "Henryk Sienkiewicz", 1888) );
-            borrowedBooksList.add( new Book("Practical course of english language for specialist IT", "Beata Błaszczyk", 2017) );
-            borrowedBooksList.add( new Book("Thinking in Java", "Bruce Encle", 2006) );
-        }
+        return libraryDatabase.listBooksInHandsOf(libraryUser);
 
-        return borrowedBooksList;
     }
 
     boolean rentABook(LibraryUser libraryUser, Book book) {
