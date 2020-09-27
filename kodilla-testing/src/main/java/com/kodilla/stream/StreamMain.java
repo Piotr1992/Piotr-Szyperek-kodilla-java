@@ -2,8 +2,11 @@ package com.kodilla.stream;
 
 import com.kodilla.stream.beautifier.PoemBeautifier;
 import com.kodilla.stream.beautifier.PoemDecorator;
+import com.kodilla.stream.immutable.ForumUser;
 import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.reference.FunctionalCalculator;
+
+import com.kodilla.stream.immutable.ForumUser;
 
 public class StreamMain {
 
@@ -25,7 +28,7 @@ public class StreamMain {
 
     public static void main(String[] args) {
 
-        PoemBeautifier pb = new PoemBeautifier();
+/*        PoemBeautifier pb = new PoemBeautifier();
 
         //  Add code to begin and end text
         PoemDecorator assignCodeBeginAndEndText = (String tekst) -> "ABC"+tekst+"ABC";
@@ -41,7 +44,10 @@ public class StreamMain {
 
         //  Replace words in text
         PoemDecorator replaceWordsInText = (tekst) -> tekst.replace("John", "Alice").replace("dog", "cat");
-        System.out.println("Replace words in text -> "+pb.beautify("John have a dog.", replaceWordsInText)+"\n");
+        System.out.println("Replace words in text -> "+pb.beautify("John have a dog.", replaceWordsInText)+"\n");               */
+
+
+        ForumUser fu = new ForumUser("as", "asf");
 
     }
 }
