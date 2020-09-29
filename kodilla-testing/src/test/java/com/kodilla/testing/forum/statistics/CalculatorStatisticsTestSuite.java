@@ -35,92 +35,106 @@ public class CalculatorStatisticsTestSuite {
     @Test
     void testCalculateAdvStatisticsNumberPostsEquals0() {
         // Given
-        Statistics calculatorStatistics = new CalculatorStatistics(statisticsDatabaseMock);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(calculatorStatistics.numberPosts);
+        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
+        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
+        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
+        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
 
         // When
-        CalculatorStatistics firstForum = new CalculatorStatistics(5, 0, 731);
+        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(0, firstForum.postsCount());
+        assertEquals(0, calculatorStatistics.numberPosts);
     }
 
     @Test
     void testCalculateAdvStatisticsNumberPostsEquals1000() {
         // Given
-        Statistics calculatorStatistics = new CalculatorStatistics(statisticsDatabaseMock);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(calculatorStatistics.postsCount());
+        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
+        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
+        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
+        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
 
         // When
-        CalculatorStatistics firstForum = new CalculatorStatistics(5, 1000, 731);
+        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(5000, firstForum.postsCount());
+        assertEquals(1000, calculatorStatistics.numberPosts);
     }
 
     @Test
     void testCalculateAdvStatisticsNumberCommentsEquals0() {
         // Given
-        Statistics calculatorStatistics = new CalculatorStatistics(statisticsDatabaseMock);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(calculatorStatistics.commentsCount());
+        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
+        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
+        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
+        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
 
         // When
-        CalculatorStatistics firstForum = new CalculatorStatistics(5, 1000, 0);
+        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(0, firstForum.commentsCount());
+        assertEquals(0, calculatorStatistics.numberComments);
     }
 
     @Test
     void testCalculateAdvStatisticsNumberCommentsLessThenPosts() {
         // Given
-        Statistics calculatorStatistics = new CalculatorStatistics(statisticsDatabaseMock);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(calculatorStatistics.commentsCount());
+        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
+        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
+        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
+        //when(calculatorStatistics.numberComments).thenReturn(34);
 
         // When
-        CalculatorStatistics firstForum = new CalculatorStatistics(5, 800, 750);
+        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(3750, firstForum.commentsCount());
+        assertEquals(calculatorStatistics.numberPosts+1, calculatorStatistics.numberComments);
     }
 
     @Test
     void testCalculateAdvStatisticsNumberCommentsMoreThenPosts() {
         // Given
-        Statistics calculatorStatistics = new CalculatorStatistics(statisticsDatabaseMock);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(calculatorStatistics.commentsCount());
+        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
+        //when(statisticsDatabaseMock.usersNames().size()).thenReturn(11);
+        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
+        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
 
         // When
-        CalculatorStatistics firstForum = new CalculatorStatistics(5, 750, 800);
+        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(4000, firstForum.commentsCount());
+        assertEquals(calculatorStatistics.numberPosts-1, calculatorStatistics.numberComments);
     }
 
     @Test
     void testCalculateAdvStatisticsNumberUsersEquals0() {
         // Given
-        Statistics calculatorStatistics = new CalculatorStatistics(statisticsDatabaseMock);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(calculatorStatistics.commentsCount());
+        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
+        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
+        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
+        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
 
         // When
-        CalculatorStatistics firstForum = new CalculatorStatistics(0, 750, 800);
+        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(0, firstForum.commentsCount());
+        assertEquals(0, calculatorStatistics.numberUsers);
     }
 
     @Test
     void testCalculateAdvStatisticsNumberUsersEquals100() {
         // Given
-        Statistics calculatorStatistics = new CalculatorStatistics(statisticsDatabaseMock);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(calculatorStatistics.commentsCount());
+        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
+        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
+        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
+        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
 
         // When
-        CalculatorStatistics firstForum = new CalculatorStatistics(100, 750, 800);
+        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(80000, firstForum.commentsCount());
+        assertEquals(100, calculatorStatistics.numberUsers);
     }
 
 }

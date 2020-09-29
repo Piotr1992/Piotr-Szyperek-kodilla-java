@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        CalculatorStatistics firstForum = new CalculatorStatistics(5, 22, 731);
+        CalculatorStatistics firstForum = new CalculatorStatistics();
 
         firstForum.showStatistics();
 
