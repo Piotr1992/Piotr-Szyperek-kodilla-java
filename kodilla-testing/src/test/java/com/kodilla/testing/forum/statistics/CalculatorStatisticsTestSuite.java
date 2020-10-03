@@ -3,18 +3,14 @@ package com.kodilla.testing.forum.statistics;
 
 import com.kodilla.testing.forum.statistics.Statistics;
 import com.kodilla.testing.forum.statistics.CalculatorStatistics;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
-
+import org.junit.jupiter.api.extension.*;
+import org.mockito.*;
 import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import org.junit.jupiter.api.*;
+import org.mockito.junit.jupiter.*;
+
 
 @ExtendWith(MockitoExtension.class)
 public class CalculatorStatisticsTestSuite {
@@ -22,119 +18,144 @@ public class CalculatorStatisticsTestSuite {
     @Mock
     private Statistics statisticsDatabaseMock;
 
-    @BeforeEach
-    public void before() {
-        System.out.println("before each!");
-    }
+    @Mock
+    List<Statistics> mockList;
 
-    @AfterEach
-    public void after() {
-        System.out.println("after each!");
+    @BeforeEach
+    public void beforeeach() {
+        System.out.println("Before each!");
     }
 
     @Test
     void testCalculateAdvStatisticsNumberPostsEquals0() {
         // Given
-        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
-        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
-        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
+        statisticsDatabaseMock = mock(Statistics.class);
+        CalculatorStatistics cs = new CalculatorStatistics();
+        cs.numberUsers = 13;
+        cs.numberPosts = 0;
+        cs.numberComments = 234;
 
-        // When
-        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
+        //When
+        cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(0, calculatorStatistics.numberPosts);
+        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
+        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
+        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        cs.showStatistics();
     }
 
     @Test
     void testCalculateAdvStatisticsNumberPostsEquals1000() {
         // Given
-        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
-        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
-        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
+        statisticsDatabaseMock = mock(Statistics.class);
+        CalculatorStatistics cs = new CalculatorStatistics();
+        cs.numberUsers = 22;
+        cs.numberPosts = 1000;
+        cs.numberComments = 234;
 
-        // When
-        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
+        //When
+        cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(1000, calculatorStatistics.numberPosts);
+        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
+        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
+        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        cs.showStatistics();
     }
 
     @Test
     void testCalculateAdvStatisticsNumberCommentsEquals0() {
         // Given
-        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
-        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
-        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
+        statisticsDatabaseMock = mock(Statistics.class);
+        CalculatorStatistics cs = new CalculatorStatistics();
+        cs.numberUsers = 55;
+        cs.numberPosts = 36;
+        cs.numberComments = 0;
 
-        // When
-        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
+        //When
+        cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(0, calculatorStatistics.numberComments);
+        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
+        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
+        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        cs.showStatistics();
     }
 
     @Test
     void testCalculateAdvStatisticsNumberCommentsLessThenPosts() {
         // Given
-        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
-        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
-        //when(calculatorStatistics.numberComments).thenReturn(34);
+        statisticsDatabaseMock = mock(Statistics.class);
+        CalculatorStatistics cs = new CalculatorStatistics();
+        cs.numberUsers = 44;
+        cs.numberPosts = 33;
+        cs.numberComments = 22;
 
-        // When
-        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
+        //When
+        cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(calculatorStatistics.numberPosts+1, calculatorStatistics.numberComments);
+        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
+        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
+        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        cs.showStatistics();
     }
 
     @Test
     void testCalculateAdvStatisticsNumberCommentsMoreThenPosts() {
         // Given
-        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
-        //when(statisticsDatabaseMock.usersNames().size()).thenReturn(11);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
-        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
+        statisticsDatabaseMock = mock(Statistics.class);
+        CalculatorStatistics cs = new CalculatorStatistics();
+        cs.numberUsers = 66;
+        cs.numberPosts = 33;
+        cs.numberComments = 44;
 
-        // When
-        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
+        //When
+        cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(calculatorStatistics.numberPosts-1, calculatorStatistics.numberComments);
+        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
+        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
+        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        cs.showStatistics();
     }
 
     @Test
     void testCalculateAdvStatisticsNumberUsersEquals0() {
         // Given
-        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
-        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
-        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
+        statisticsDatabaseMock = mock(Statistics.class);
+        CalculatorStatistics cs = new CalculatorStatistics();
+        cs.numberUsers = 0;
+        cs.numberPosts = 51;
+        cs.numberComments = 69;
 
-        // When
-        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
+        //When
+        cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(0, calculatorStatistics.numberUsers);
+        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
+        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
+        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        cs.showStatistics();
     }
 
     @Test
     void testCalculateAdvStatisticsNumberUsersEquals100() {
         // Given
-        CalculatorStatistics calculatorStatistics = new CalculatorStatistics();
-        //when(statisticsDatabaseMock.usersNames()).thenReturn(11);
-        //when(statisticsDatabaseMock.postsCount()).thenReturn(0);
-        //when(statisticsDatabaseMock.commentsCount()).thenReturn(34);
-
-        // When
-        calculatorStatistics.calculateAdvStatistics(statisticsDatabaseMock);
+        statisticsDatabaseMock = mock(Statistics.class);
+        CalculatorStatistics cs = new CalculatorStatistics();
+        cs.numberUsers = 100;
+        cs.numberPosts = 96;
+        cs.numberComments = 15;
+        //When
+        cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(100, calculatorStatistics.numberUsers);
+        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
+        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
+        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        cs.showStatistics();
     }
 
 }

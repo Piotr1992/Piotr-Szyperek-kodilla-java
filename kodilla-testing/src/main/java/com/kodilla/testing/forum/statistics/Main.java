@@ -10,9 +10,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        CalculatorStatistics firstForum = new CalculatorStatistics();
+        //CalculatorStatistics firstForum = new CalculatorStatistics();
 
-        firstForum.showStatistics();
+        //firstForum.showStatistics();
 
     }
 

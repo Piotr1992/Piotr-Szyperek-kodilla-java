@@ -8,12 +8,12 @@ import java.util.*;
 
 public class CalculatorStatistics {
 
-    int numberUsers;
-    int numberPosts;
-    int numberComments;
-    double averageNumberPostsUser;
-    double averageNumberCommentsUser;
-    double averageNumberCommentsPost;
+    public int numberUsers;
+    public int numberPosts;
+    public int numberComments;
+    public double averageNumberPostsUser;
+    public double averageNumberCommentsUser;
+    public double averageNumberCommentsPost;
 
     public double getAverageNumberPostsUser() {
         return averageNumberPostsUser;
@@ -27,22 +27,42 @@ public class CalculatorStatistics {
         return averageNumberCommentsPost;
     }
 
+    public int getNumberUsers() {
+        return numberUsers;
+    }
+
+    public int getNumberPosts() {
+        return numberPosts;
+    }
+
+    public int getNumberComments() {
+        return numberComments;
+    }
+
     public void calculateAdvStatistics(Statistics statistics) {
-        if( numberPosts==0 || numberUsers==0 ) {
-            averageNumberPostsUser = 0;
-        } else {
+        if( numberUsers != 0 && numberPosts != 0 ) {
             averageNumberPostsUser = numberPosts / numberUsers;
-        }
-        if( numberComments==0 || numberUsers==0 ) {
-            averageNumberCommentsUser = 0;
-        } else {
             averageNumberCommentsUser = numberComments / numberUsers;
-        }
-        if( numberComments==0 || numberPosts==0 ) {
-            averageNumberCommentsPost = 0;
-        } else {
             averageNumberCommentsPost = numberComments / numberPosts;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CalculatorStatistics that = (CalculatorStatistics) o;
+        return numberUsers == that.numberUsers &&
+                numberPosts == that.numberPosts &&
+                numberComments == that.numberComments &&
+                Double.compare(that.averageNumberPostsUser, averageNumberPostsUser) == 0 &&
+                Double.compare(that.averageNumberCommentsUser, averageNumberCommentsUser) == 0 &&
+                Double.compare(that.averageNumberCommentsPost, averageNumberCommentsPost) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numberUsers, numberPosts, numberComments, averageNumberPostsUser, averageNumberCommentsUser, averageNumberCommentsPost);
     }
 
     public void showStatistics() {
