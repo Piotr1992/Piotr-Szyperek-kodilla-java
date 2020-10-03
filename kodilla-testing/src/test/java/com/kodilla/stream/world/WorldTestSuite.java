@@ -1,19 +1,9 @@
-
 package com.kodilla.stream.world;
 
-import com.kodilla.stream.world.*;
-
 import org.junit.Assert;
-import org.junit.jupiter.api.extension.*;
-import org.mockito.*;
-
 import java.math.BigDecimal;
 import java.util.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.*;
-import org.mockito.junit.jupiter.*;
-
 
 public class WorldTestSuite {
 
