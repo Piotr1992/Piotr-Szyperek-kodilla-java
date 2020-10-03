@@ -1,24 +1,37 @@
+
 package com.kodilla.stream.world;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Continent {
-    BigDecimal bd = new BigDecimal("10");
 
     List<Country> listCountry = new ArrayList<>();
 
-    public List<Country> addCountry(List<Country> listCountry) {
-        listCountry  = new ArrayList<Country>();
-        for(int i=1; i<=2; i++) {
-            listCountry.add(new Country(bd));
-            bd.add(bd);
-        }
+    public Continent(List<Country> listCountry) {
+        this.listCountry = listCountry;
+    }
+
+    public void addlistCountry(Country c) {
+        listCountry.add(c);
+    }
+
+    public List<Country> getlistCountry() {
         return listCountry;
     }
 
-    public BigDecimal getCountryList() {
-        return new BigDecimal("9876543210");
-    }
+/*    public static void main(String[] args) {
+
+        Continent lC2 = new Continent(new ArrayList<>());
+        lC2.addlistCountry(new Country(new BigDecimal("111111111")));
+        lC2.addlistCountry(new Country(new BigDecimal("222222222")));
+        BigDecimal bd = lC2.getlistCountry().stream().map(country -> country.getPeopleQuantity())
+                                                     .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
+        System.out.println("bd = " + bd);
+
+    }               */
+
 }
