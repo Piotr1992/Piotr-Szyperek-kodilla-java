@@ -17,9 +17,7 @@ public class CalculatorStatisticsTestSuite {
 
     @Mock
     private Statistics statisticsDatabaseMock;
-
-    @Mock
-    List<Statistics> mockList;
+    List<String> listString = new ArrayList<String>();
 
     @BeforeEach
     public void beforeeach() {
@@ -34,10 +32,12 @@ public class CalculatorStatisticsTestSuite {
         cs.numberUsers = 13;
         cs.numberPosts = 0;
         cs.numberComments = 234;
-/*        List<String> listString = new ArrayList<String>();
-        listString.add("AAA");
-        listString.add("BBB");
-        when(statisticsDatabaseMock.usersNames()).thenReturn(cs.getStatistics().usersNames());          */
+        for(int i=0; i<13; i++) {
+            listString.add(""+i+"");
+        }
+        when(statisticsDatabaseMock.usersNames()).thenReturn(listString);
+        when(statisticsDatabaseMock.postsCount()).thenReturn(0);
+        when(statisticsDatabaseMock.commentsCount()).thenReturn(234);
 
         //When
         cs.calculateAdvStatistics(statisticsDatabaseMock);
@@ -57,6 +57,12 @@ public class CalculatorStatisticsTestSuite {
         cs.numberUsers = 22;
         cs.numberPosts = 1000;
         cs.numberComments = 234;
+        for(int i=0; i<22; i++) {
+            listString.add(""+i+"");
+        }
+        when(statisticsDatabaseMock.usersNames()).thenReturn(listString);
+        when(statisticsDatabaseMock.postsCount()).thenReturn(1000);
+        when(statisticsDatabaseMock.commentsCount()).thenReturn(234);
 
         //When
         cs.calculateAdvStatistics(statisticsDatabaseMock);
@@ -76,6 +82,12 @@ public class CalculatorStatisticsTestSuite {
         cs.numberUsers = 55;
         cs.numberPosts = 36;
         cs.numberComments = 0;
+        for(int i=0; i<55; i++) {
+            listString.add(""+i+"");
+        }
+        when(statisticsDatabaseMock.usersNames()).thenReturn(listString);
+        when(statisticsDatabaseMock.postsCount()).thenReturn(36);
+        when(statisticsDatabaseMock.commentsCount()).thenReturn(0);
 
         //When
         cs.calculateAdvStatistics(statisticsDatabaseMock);
@@ -95,6 +107,12 @@ public class CalculatorStatisticsTestSuite {
         cs.numberUsers = 44;
         cs.numberPosts = 33;
         cs.numberComments = 22;
+        for(int i=0; i<44; i++) {
+            listString.add(""+i+"");
+        }
+        when(statisticsDatabaseMock.usersNames()).thenReturn(listString);
+        when(statisticsDatabaseMock.postsCount()).thenReturn(33);
+        when(statisticsDatabaseMock.commentsCount()).thenReturn(22);
 
         //When
         cs.calculateAdvStatistics(statisticsDatabaseMock);
@@ -114,6 +132,12 @@ public class CalculatorStatisticsTestSuite {
         cs.numberUsers = 66;
         cs.numberPosts = 33;
         cs.numberComments = 44;
+        for(int i=0; i<66; i++) {
+            listString.add(""+i+"");
+        }
+        when(statisticsDatabaseMock.usersNames()).thenReturn(listString);
+        when(statisticsDatabaseMock.postsCount()).thenReturn(33);
+        when(statisticsDatabaseMock.commentsCount()).thenReturn(44);
 
         //When
         cs.calculateAdvStatistics(statisticsDatabaseMock);
@@ -133,6 +157,9 @@ public class CalculatorStatisticsTestSuite {
         cs.numberUsers = 0;
         cs.numberPosts = 51;
         cs.numberComments = 69;
+        when(statisticsDatabaseMock.usersNames()).thenReturn(listString);
+        when(statisticsDatabaseMock.postsCount()).thenReturn(51);
+        when(statisticsDatabaseMock.commentsCount()).thenReturn(69);
 
         //When
         cs.calculateAdvStatistics(statisticsDatabaseMock);
@@ -152,6 +179,13 @@ public class CalculatorStatisticsTestSuite {
         cs.numberUsers = 100;
         cs.numberPosts = 96;
         cs.numberComments = 15;
+        for(int i=0; i<100; i++) {
+            listString.add(""+i+"");
+        }
+        when(statisticsDatabaseMock.usersNames()).thenReturn(listString);
+        when(statisticsDatabaseMock.postsCount()).thenReturn(96);
+        when(statisticsDatabaseMock.commentsCount()).thenReturn(15);
+
         //When
         cs.calculateAdvStatistics(statisticsDatabaseMock);
 

@@ -14,7 +14,6 @@ public class CalculatorStatistics {
     public double averageNumberPostsUser;
     public double averageNumberCommentsUser;
     public double averageNumberCommentsPost;
-//    Statistics statistics;
 
     public double getAverageNumberPostsUser() {
         return averageNumberPostsUser;
@@ -40,14 +39,11 @@ public class CalculatorStatistics {
         return numberComments;
     }
 
-/*    public Statistics getStatistics() {
-        return statistics;
-    }           */
-
     public void calculateAdvStatistics(Statistics statistics) {
+        statistics.usersNames().add("A");
+        statistics.postsCount();
+        statistics.commentsCount();
         if( numberUsers != 0 && numberPosts != 0 ) {
-/*            getStatistics().usersNames().add("AAA");
-            getStatistics().usersNames().add("CCC");                */
             averageNumberPostsUser = numberPosts / numberUsers;
             averageNumberCommentsUser = numberComments / numberUsers;
             averageNumberCommentsPost = numberComments / numberPosts;
