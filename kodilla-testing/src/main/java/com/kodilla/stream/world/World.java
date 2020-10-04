@@ -8,7 +8,6 @@ public class World {
 
     public BigDecimal population;
     List<Continent> listContinent = new ArrayList<>();
-    List<Country> listCountries = new ArrayList<>();
 
     public void addlistContinent(Continent c) {
         listContinent.add(c);

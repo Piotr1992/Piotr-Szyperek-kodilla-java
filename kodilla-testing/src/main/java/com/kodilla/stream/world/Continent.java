@@ -7,11 +7,11 @@ public class Continent {
 
     List<Country> listCountry = new ArrayList<>();
 
-    public Continent(List<Country> listCountry) {
+    public Continent() {
         this.listCountry = listCountry;
     }
 
-    public void addlistCountry(Country c) {
+    public void addCountry(Country c) {
         listCountry.add(c);
     }
 
