@@ -34,6 +34,10 @@ public class CalculatorStatisticsTestSuite {
         cs.numberUsers = 13;
         cs.numberPosts = 0;
         cs.numberComments = 234;
+/*        List<String> listString = new ArrayList<String>();
+        listString.add("AAA");
+        listString.add("BBB");
+        when(statisticsDatabaseMock.usersNames()).thenReturn(cs.getStatistics().usersNames());          */
 
         //When
         cs.calculateAdvStatistics(statisticsDatabaseMock);
