@@ -39,15 +39,25 @@ public class CalculatorStatistics {
         return numberComments;
     }
 
+/*    statistics.usersNames();
+    statistics.postsCount();
+    statistics.commentsCount();     */
+
     public void calculateAdvStatistics(Statistics statistics) {
-        statistics.usersNames().add("A");
-        statistics.postsCount();
-        statistics.commentsCount();
-        if( numberUsers != 0 && numberPosts != 0 ) {
-            averageNumberPostsUser = numberPosts / numberUsers;
-            averageNumberCommentsUser = numberComments / numberUsers;
-            averageNumberCommentsPost = numberComments / numberPosts;
+        if( statistics.usersNames().size() != 0 ) {
+            averageNumberPostsUser = statistics.postsCount() / statistics.usersNames().size();
         }
+        if( statistics.usersNames().size() != 0 ) {
+            averageNumberCommentsUser = statistics.commentsCount() / statistics.usersNames().size();
+        }
+        if( statistics.postsCount() != 0 ) {
+            averageNumberCommentsPost = statistics.commentsCount() / statistics.postsCount();
+        }
+/*        List<Double> listyDouble = new ArrayList<Double>();
+        listyDouble.add(averageNumberPostsUser);
+        listyDouble.add(averageNumberCommentsUser);
+        listyDouble.add(averageNumberCommentsPost);
+        return listyDouble;             */
     }
 
     @Override
