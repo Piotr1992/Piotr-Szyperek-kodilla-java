@@ -37,15 +37,15 @@ public class CalculatorStatisticsTestSuite {
         }
         when(statisticsDatabaseMock.usersNames()).thenReturn(listString);
         when(statisticsDatabaseMock.postsCount()).thenReturn(0);
-//        when(statisticsDatabaseMock.commentsCount()).thenReturn(234);
+        when(statisticsDatabaseMock.commentsCount()).thenReturn(234);
 
         //When
         cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
-        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
-        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        assertEquals(18.0, cs.getAverageNumberCommentsUser());
+        assertEquals(0.0, cs.getAverageNumberCommentsPost());
+        assertEquals(0.0, cs.getAverageNumberPostsUser());
         cs.showStatistics();
     }
 
@@ -68,9 +68,9 @@ public class CalculatorStatisticsTestSuite {
         cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
-        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
-        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        assertEquals(10.636363636363637, cs.getAverageNumberCommentsUser());
+        assertEquals(0.234, cs.getAverageNumberCommentsPost());
+        assertEquals(45.45454545454545, cs.getAverageNumberPostsUser());
         cs.showStatistics();
     }
 
@@ -91,14 +91,11 @@ public class CalculatorStatisticsTestSuite {
 
         //When
         cs.calculateAdvStatistics(statisticsDatabaseMock);
-        //double db = cs.calculateAdvStatistics(statisticsDatabaseMock).get();
 
         // Then
-//        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
-//        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
-        //assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
-        System.out.println("cs.averageNumberPostsUser -> " + cs.averageNumberPostsUser + "\ncs.getAverageNumberPostsUser() -> " + cs.getAverageNumberPostsUser());
-        //assertEquals(0, cs.getAverageNumberPostsUser());
+        assertEquals(0.0, cs.getAverageNumberCommentsUser());
+        assertEquals(0.0, cs.getAverageNumberCommentsPost());
+        assertEquals(0.6545454545454545, cs.getAverageNumberPostsUser());
         cs.showStatistics();
     }
 
@@ -121,9 +118,9 @@ public class CalculatorStatisticsTestSuite {
         cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
-        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
-        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        assertEquals(0.5, cs.getAverageNumberCommentsUser());
+        assertEquals(0.6666666666666666, cs.getAverageNumberCommentsPost());
+        assertEquals(0.75, cs.getAverageNumberPostsUser());
         cs.showStatistics();
     }
 
@@ -146,9 +143,9 @@ public class CalculatorStatisticsTestSuite {
         cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
-        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
-        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        assertEquals(0.6666666666666666, cs.getAverageNumberCommentsUser());
+        assertEquals(1.3333333333333333, cs.getAverageNumberCommentsPost());
+        assertEquals(0.5, cs.getAverageNumberPostsUser());
         cs.showStatistics();
     }
 
@@ -161,16 +158,16 @@ public class CalculatorStatisticsTestSuite {
         cs.numberPosts = 51;
         cs.numberComments = 69;
         when(statisticsDatabaseMock.usersNames()).thenReturn(listString);
-//        when(statisticsDatabaseMock.postsCount()).thenReturn(51);
-//        when(statisticsDatabaseMock.commentsCount()).thenReturn(69);
+        when(statisticsDatabaseMock.postsCount()).thenReturn(51);
+        when(statisticsDatabaseMock.commentsCount()).thenReturn(69);
 
         //When
         cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
-        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
-        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        assertEquals(0.0, cs.getAverageNumberCommentsUser());
+        assertEquals(1.3529411764705883, cs.getAverageNumberCommentsPost());
+        assertEquals(0.0, cs.getAverageNumberPostsUser());
         cs.showStatistics();
     }
 
@@ -193,9 +190,9 @@ public class CalculatorStatisticsTestSuite {
         cs.calculateAdvStatistics(statisticsDatabaseMock);
 
         // Then
-        assertEquals(cs.averageNumberCommentsUser, cs.getAverageNumberCommentsUser());
-        assertEquals(cs.averageNumberCommentsPost, cs.getAverageNumberCommentsPost());
-        assertEquals(cs.averageNumberPostsUser, cs.getAverageNumberPostsUser());
+        assertEquals(0.15, cs.getAverageNumberCommentsUser());
+        assertEquals(0.15625, cs.getAverageNumberCommentsPost());
+        assertEquals(0.96, cs.getAverageNumberPostsUser());
         cs.showStatistics();
     }
 

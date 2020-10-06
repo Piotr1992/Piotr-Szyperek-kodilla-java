@@ -8,9 +8,9 @@ import java.util.*;
 
 public class CalculatorStatistics {
 
-    public int numberUsers;
-    public int numberPosts;
-    public int numberComments;
+    public double numberUsers;
+    public double numberPosts;
+    public double numberComments;
     public double averageNumberPostsUser;
     public double averageNumberCommentsUser;
     public double averageNumberCommentsPost;
@@ -27,37 +27,23 @@ public class CalculatorStatistics {
         return averageNumberCommentsPost;
     }
 
-    public int getNumberUsers() {
-        return numberUsers;
-    }
 
-    public int getNumberPosts() {
-        return numberPosts;
-    }
-
-    public int getNumberComments() {
-        return numberComments;
-    }
-
-/*    statistics.usersNames();
-    statistics.postsCount();
-    statistics.commentsCount();     */
 
     public void calculateAdvStatistics(Statistics statistics) {
-        if( statistics.usersNames().size() != 0 ) {
-            averageNumberPostsUser = statistics.postsCount() / statistics.usersNames().size();
+
+        numberUsers = statistics.usersNames().size();
+        numberComments = statistics.commentsCount();
+        numberPosts = statistics.postsCount();
+
+        if( numberUsers != 0.0 ) {
+            averageNumberPostsUser = (double)(numberPosts / numberUsers);
         }
-        if( statistics.usersNames().size() != 0 ) {
-            averageNumberCommentsUser = statistics.commentsCount() / statistics.usersNames().size();
+        if( numberUsers != 0.0 ) {
+            averageNumberCommentsUser = (double)(numberComments / numberUsers);
         }
-        if( statistics.postsCount() != 0 ) {
-            averageNumberCommentsPost = statistics.commentsCount() / statistics.postsCount();
+        if( numberPosts != 0.0 ) {
+            averageNumberCommentsPost = (double)(numberComments / numberPosts);
         }
-/*        List<Double> listyDouble = new ArrayList<Double>();
-        listyDouble.add(averageNumberPostsUser);
-        listyDouble.add(averageNumberCommentsUser);
-        listyDouble.add(averageNumberCommentsPost);
-        return listyDouble;             */
     }
 
     @Override
