@@ -92,17 +92,20 @@ class BoardTestSuite {
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
 
-        List<Task> tasks = project.getTaskLists().stream()
+/*        List<Task> tasks = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .filter(t -> t.getDeadline().isAfter(LocalDate.now()))
-                .collect(toList());
+                .collect(toList());             */
 
-/*        int summary = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .filter(t -> t.getDeadline().isAfter(LocalDate.now()))
-                .reduce(0.0, sum).;                                             */
+/*        LocalDate l = LocalDate.now();
+
+        List<Task> tasks = project.getTaskLists().stream()
+                .mapToLong(x->now)
+                .average().getAsDouble();               */
+
+
+
 
         //double averageNumberDaysExecuteTasks = summary/tasks.size();
 
@@ -110,7 +113,7 @@ class BoardTestSuite {
         //System.out.println(tasks.size() + " -- " + summary + " -- " + averageNumberDaysExecuteTasks);
 
         //Then
-        assertEquals(2, tasks.size());
+//        assertEquals(2, tasks.size());
 
     }
 
