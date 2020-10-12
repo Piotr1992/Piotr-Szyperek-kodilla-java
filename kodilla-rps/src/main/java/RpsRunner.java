@@ -7,10 +7,6 @@ public class RpsRunner {
 
     public static void main(String[] args) {
 
-
-
-
-
         Scanner scName = new Scanner(System.in);
         Scanner scNumberOfRounds = new Scanner(System.in);
 
@@ -27,20 +23,9 @@ public class RpsRunner {
         System.out.println("key x - ending the game, preceded by the question \"Are you sure you want to end the game?\"");
         System.out.println("n key - restart the game, preceded by the question \"Are you sure you want to end the current game?\"");
 
-        System.out.println("\n\nExecute move:");
+        System.out.println("\n\nStart game!\n");
         Game game = new Game(name, numberOfRoundsWin);
         game.playGame();
-
-
-
-
-
-
-/*        playerComputer pc = new playerComputer();
-
-        pc.executeMove();       */
-
-
 
     }
 

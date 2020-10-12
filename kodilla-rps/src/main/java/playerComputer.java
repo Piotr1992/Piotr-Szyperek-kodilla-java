@@ -7,8 +7,9 @@ import java.util.Random;
 
 class playerComputer {
 
-    public int executeMove() {
 
+
+    public int executeMove() {
         List<Integer> allowedMoves = new ArrayList<>();
         allowedMoves.add(1);
         allowedMoves.add(2);
@@ -19,7 +20,8 @@ class playerComputer {
         int move = allowedMoves.get(chooseMoves);
 
         return move;
-
     }
+
+
 
 }
