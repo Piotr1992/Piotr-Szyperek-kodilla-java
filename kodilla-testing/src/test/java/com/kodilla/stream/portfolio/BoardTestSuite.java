@@ -3,6 +3,7 @@ package com.kodilla.stream.portfolio;
 
 import org.junit.jupiter.api.Test;
 
+import java.awt.geom.Arc2D;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -86,29 +87,6 @@ class BoardTestSuite {
     @Test
     void testAddTaskListAverageWorkingOnTask() {
 
-/*        Board project = prepareTestData();
-
-        //When
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
-        long counterDays = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .map(Task::getDeadline).
-                .filter(d -> d.isAfter(LocalDate.now()))
-                .count();
-
-        LocalDate dateStart = LocalDate.of(2017, 2, 13);
-        LocalDate dateEnd = LocalDate.now();
-
-        long sumDays = counterDays
-
-        System.out.println(sumDays);            */
-
-
-
-
-
         //Given
         Board project = prepareTestData();
 
@@ -116,46 +94,15 @@ class BoardTestSuite {
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
 
-        LocalDate dateStart = LocalDate.of(2017, 2, 13);
-        LocalDate dateEnd = LocalDate.now();
-        long daysBetween = DAYS.between(dateStart, dateEnd);
-
-        List<Task> tasks = project.getTaskLists().stream()
+        double averageNumbersDaysRealizationTask = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .filter(t -> t.getDeadline().isBefore(LocalDate.now()))
-                .mapToLong(a -> DAYS.between(a.getDeadline(), a.getCreator()))
+                .mapToLong(a -> DAYS.between(a.getCreated(), LocalDate.now()))
                 .average()
                 .getAsDouble();
-
-        System.out.println("daysBetween -> " + daysBetween);
-
-
-
-
-
-
-/*        double tasks = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .map(Task::getDeadline)
-                .mapToLong(DAYS.between(dateStart, dateEnd))
-                .average()
-                .getAsDouble();
-
-        System.out.println( "Average number days -> " + tasks );                */
-
-
-
-
-
-        //double averageNumberDaysExecuteTasks = summary/tasks.size();
-
-        //System.out.println("AAA -> " + averageNumberDaysExecuteTasks + " <- ZZZ");
-        //System.out.println(tasks.size() + " -- " + summary + " -- " + averageNumberDaysExecuteTasks);
 
         //Then
-//        assertEquals(2, tasks.size());
+        assertEquals(10.0, averageNumbersDaysRealizationTask);
 
     }
 

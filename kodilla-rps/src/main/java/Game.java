@@ -107,14 +107,16 @@ class Game {
             if ( key.equals("x") ) {
                 System.out.println("Are you sure you want to end the game?\nPress key Y or y!");
                 if( key.equals("Y") && key.equals("y") ) {
-                    System.exit(-1);
+                    //System.exit(-1);
+                    System.out.println("Key = " + key);
                 }
             } else if ( key.equals("n") ) {
                 System.out.println("Are you sure you want to end the current game?\nPress key Y or y!");
                 if( key.equals("Y") && key.equals("y") ) {
-                    RpsRunner rr = new RpsRunner();
+/*                    RpsRunner rr = new RpsRunner();
                     String[] arg = new String[10];
-                    rr.main(arg);
+                    rr.main(arg);           */
+                    System.out.println("Key = " + key);
                 }
             }
         }
