@@ -3,12 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
-
-class playerComputer {
-
-
-
+class PlayerComputer {
     public int executeMove() {
         List<Integer> allowedMoves = new ArrayList<>();
         allowedMoves.add(1);
@@ -21,7 +16,4 @@ class playerComputer {
 
         return move;
     }
-
-
-
 }

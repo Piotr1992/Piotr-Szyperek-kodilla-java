@@ -1,10 +1,7 @@
 
 import java.util.Scanner;
 
-
-
 public class RpsRunner {
-
     public static void main(String[] args) {
 
         Scanner scName = new Scanner(System.in);
@@ -14,7 +11,7 @@ public class RpsRunner {
         String name = scName.next();
 
         System.out.print("\nGive number of rounds won and followed by victory:\t");
-        int numberOfRoundsWin = scNumberOfRounds.nextInt();
+        int numberOfRoundsWin = getInputInt( scNumberOfRounds );
 
         System.out.println("\nGame manual:");
         System.out.println("key 1 - play \"stone\"");
@@ -29,6 +26,19 @@ public class RpsRunner {
 
     }
 
+    public static int getInputInt(Scanner in) {
+        while (in.hasNext()) {
+            if (in.hasNextInt()) {
+                int val = in.nextInt();
+                if (val > 0 ) {
+                    return val;
+                }
+            } else {
+                in.next();
+            }
+        }
+        return -1;
+    }
 }
 
 
