@@ -5,7 +5,6 @@ class Game {
 
     private String nameHuman;
     private int numberOfRoundsWin;
-    //private PlayerHuman pH = new PlayerHuman(nameHuman);
     private PlayerHuman pH = new PlayerHuman();
     private PlayerComputer pC = new PlayerComputer();
     Scanner chooseMove = new Scanner(System.in);
@@ -24,7 +23,6 @@ class Game {
         int movePlayerHuman = 0;
 
         while (!end) {
-
             System.out.print("Execute move: \t");
             movePlayerHuman  = pH.executeMove( getInputInt( chooseMove, 4) );
 
@@ -43,10 +41,28 @@ class Game {
 
             if( numberOfRoundsHuman == numberOfRoundsWin ) {
                 end = true;
-                System.out.println("Player "+nameHuman+" win game!");
+                System.out.println("Player-"+nameHuman+" win game!");
+                System.out.println("Do you want to play again?\nPress key Y/y or if you return to game press other key!");
+                char keyY = chooseMove.next().charAt(0);
+                if( (keyY == 'Y') || (keyY == 'y') ) {
+                    RpsRunner rr = new RpsRunner();
+                    String[] arg = new String[100];
+                    rr.main(arg);
+                } else {
+                    System.exit(0);
+                }
             } else if( numberOfRoundsComputer == numberOfRoundsWin ) {
                 end = true;
-                System.out.println("Player computer win game!");
+                System.out.println("Player-Computer win game!");
+                System.out.println("Do you want to play again?\nPress key Y/y or if you return to game press other key!");
+                char keyY = chooseMove.next().charAt(0);
+                if( (keyY == 'Y') || (keyY == 'y') ) {
+                    RpsRunner rr = new RpsRunner();
+                    String[] arg = new String[100];
+                    rr.main(arg);
+                } else {
+                    System.exit(0);
+                }
             }
         }
     }
@@ -82,47 +98,44 @@ class Game {
         } else {
             System.out.println("There was a draw this round!");
         }
-        System.out.println("Currently result game : \nPlayer Human -> " + resultPlayerHuman + "\tPlayer Computer -> " + resultPlayerComputer + "\n\n\n");
+        System.out.println("Currently result game : \nPlayer-" + nameHuman + " -> " + resultPlayerHuman + "\tPlayer-Computer -> " + resultPlayerComputer + "\n\n\n");
     }
 
     public int getInputInt(Scanner in, int range)  {
-        //out:
+        out:
         while (in.hasNext()) {
             if (in.hasNextInt()) {
                 int val = in.nextInt();
                 if (val > 0 && val < range) {
                     return val;
                 }
-            } else {//if (in.hasNext()) {
-                //char keyXN = in.next().charAt(0);
-                if ( in.next().charAt(0) == 'x' ) {
-                    System.out.println("Are you sure you want to end the game?\nPress key Y/y or N/n if you return to game press other key!");
+            }
+            else {
+                char keyXN = in.next().charAt(0);
+                if ( keyXN == 'x' ) {
+                    System.out.println("Are you sure you want to end the game?\nPress key Y or y. If you return to game press other any key!");
                     char keyY = in.next().charAt(0);
                     if( (keyY == 'Y') || (keyY == 'y') ) {
                         System.out.println("if");
                         System.exit(0);
-                    } else if( (keyY == 'N') || (keyY == 'n') ) {
-                        System.out.print("Execute move: \t");
-                        //in.next();
-                        System.out.println("else if");
                     } else {
-                        System.out.println("else");
+                        System.out.print("Execute move: \t");
+                        continue out;
                     }
-                    System.out.println("END");
-                } else if ( in.next().charAt(0) == 'n' ) {
+                }else if ( keyXN == 'n' ) {
                     System.out.println("Are you sure you want to end the current game?\nPress key Y/y or if you return to game press other key!");
                     char keyY = in.next().charAt(0);
                     if( (keyY == 'Y') || (keyY == 'y') ) {
                         RpsRunner rr = new RpsRunner();
                         String[] arg = new String[100];
                         rr.main(arg);
-                    }/* else {
-                        in.nextInt();
-                    }*/
-                } /*else {
-                    in.nextInt();
-                }*/
+                    } else {
+                        System.out.print("Execute move: \t");
+                        continue out;
+                    }
+                }
             }
+
         }
         return -1;
     }

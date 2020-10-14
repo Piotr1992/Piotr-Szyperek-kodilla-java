@@ -2,8 +2,7 @@
 import java.util.*;
 
 class PlayerHuman {
-/*    private String name;
-    public PlayerHuman(String name) {this.name = name;}     */
+
     public int executeMove(int chooseMove) {
         List<Integer> allowedMoves = new ArrayList<>();
         allowedMoves.add(1);
