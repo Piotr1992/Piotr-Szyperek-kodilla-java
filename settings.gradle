@@ -4,4 +4,5 @@ include 'forum'
 include 'kodilla-testing2'
 include 'kodilla-exception'
 include 'kodilla-rps'
+include 'kodilla-good-patterns'
 
