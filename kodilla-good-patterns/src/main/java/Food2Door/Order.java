@@ -1,5 +1,7 @@
 
-package com.kodilla.good.patterns.challenges;
+package Food2Door;
+
+import com.kodilla.good.patterns.challenges.Product;
 
 import java.time.LocalDateTime;
 import java.util.List;
