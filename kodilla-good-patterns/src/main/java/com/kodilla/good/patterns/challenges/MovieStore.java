@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
-
-
 class MovieStore {
 
     public Map<String, List<String>> getMovies() {

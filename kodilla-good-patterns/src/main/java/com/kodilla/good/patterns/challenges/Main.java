@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static void main(String[] args) {
-
         MovieStore ms = new MovieStore();
 
         String str = ms.getMovies().entrySet().stream()
@@ -14,6 +13,5 @@ public class Main {
             .collect(Collectors.joining("!"));
 
         System.out.print(str);
-
     }
 }
