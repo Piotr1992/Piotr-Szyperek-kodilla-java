@@ -1,7 +1,7 @@
 
 package food2door;
 
-public class Producer implements Supplier {
+public class ExtraFoodShop implements Supplier {
 
     private String nameOfCompany;
     private String address;
@@ -9,8 +9,8 @@ public class Producer implements Supplier {
     private String addressEmail;
     private String phone;
 
-    public Producer(final String nameOfCompany, final String address, final String codePost,
-             final String addressEmail, final String phone) {
+    public ExtraFoodShop(final String nameOfCompany, final String address, final String codePost,
+                         final String addressEmail, final String phone) {
         this.nameOfCompany = nameOfCompany;
         this.address = address;
         this.codePost = codePost;
@@ -45,8 +45,8 @@ public class Producer implements Supplier {
 
     public boolean process(Order order) {
         System.out.println("\nDate of order -> " + order.getDateCreatedOrder() +
-                            "\nDate of realization -> " + order.getDateRealizationOrder() +
-                            "\nData about products -> ");
+                "\nDate of realization -> " + order.getDateRealizationOrder() +
+                "\nData about products -> ");
         order.getListOfProducts().forEach((n) ->
                 System.out.println( "Type of product -> " + n.getTypeProduct() + "\t\tQuantity -> " + n.getQuantity()   )   );
         return true;

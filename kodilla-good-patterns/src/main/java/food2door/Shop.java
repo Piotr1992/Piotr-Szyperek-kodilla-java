@@ -2,9 +2,9 @@
 package food2door;
 
 public class Shop {
-    private Producer supplier;
+    private Supplier supplier;
     private Order order;
-    public Shop(final Producer supplier, final Order order) {
+    public Shop(final Supplier supplier, final Order order) {
         this.supplier = supplier;
         this.order = order;
     }

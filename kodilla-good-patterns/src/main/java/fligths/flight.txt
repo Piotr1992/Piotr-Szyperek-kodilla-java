@@ -1,0 +1,6 @@
+Warszawa->Kraków
+Gdańsk->Kraków->Wrocław
+Katowice->Poznań->Szczecin
+Białystok->Zakopane
+Sopot->Kielce->Rzeszów
+Łódź->Gdynia
