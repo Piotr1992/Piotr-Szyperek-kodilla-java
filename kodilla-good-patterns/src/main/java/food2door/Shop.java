@@ -16,7 +16,7 @@ public class Shop {
                 new ProductOrderRepository()
         );
         System.out.println("\nBEGIN supply from " + supplier.getNameOfCompany());
-        orderProcessor.process(orderRequest);
+        supplier.process(order);
         System.out.println("\nEND supply from " + supplier.getNameOfCompany());
     }
 }
