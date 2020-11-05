@@ -22,8 +22,8 @@ public class TimeTableFlights {
         List<String> searchAllFlightToCity = systemFlights.getListOfFlights().stream().map(s->s.getToCity()).collect(Collectors.toList());
 
         ServiceFlights serviceFlights = new ServiceFlights();
-        serviceFlights.findAllFlightFromCity(systemFlights.getListOfFlights(), "Warszawa", searchAllFlightFromCity, searchAllFlightToCity);
-        serviceFlights.findAllFlightToCity(systemFlights.getListOfFlights(), "Poznań", searchAllFlightFromCity, searchAllFlightToCity);
-        serviceFlights.findAllFlightOverCity(systemFlights.getListOfFlights(), "Warszawa", searchAllFlightFromCity, searchAllFlightToCity);     //  Poznań
+        serviceFlights.findAllFlightFromCity(searchAllFlightFromCity, searchAllFlightToCity, "Warszawa");
+        serviceFlights.findAllFlightToCity(searchAllFlightFromCity, searchAllFlightToCity, "Poznań");
+        serviceFlights.findAllFlightOverCity(searchAllFlightFromCity, searchAllFlightToCity, "Warszawa");     //  Poznań
     }
 }

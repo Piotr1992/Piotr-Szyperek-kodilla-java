@@ -7,21 +7,21 @@ import java.util.Map;
 
 public class ServiceFlights {
 
-    public void findAllFlightFromCity(List<Flight> listOfFlights, String searchFlight, List<String> searchAllFlightFromCity, List<String> searchAllFlightToCity) {
+    public void findAllFlightFromCity(List<String> searchAllFlightFromCity, List<String> searchAllFlightToCity, String searchFlight) {
         for ( int i = 0; i < searchAllFlightFromCity.size(); i++ ) {
             if ( searchAllFlightFromCity.get(i).equals(searchFlight) ) {
                 System.out.println(searchFlight + " -> " + searchAllFlightToCity.get(i));
             }
         }
     }
-    public void findAllFlightToCity(List<Flight> listOfFlights, String searchFlight, List<String> searchAllFlightFromCity, List<String> searchAllFlightToCity) {
+    public void findAllFlightToCity(List<String> searchAllFlightFromCity, List<String> searchAllFlightToCity, String searchFlight) {
         for ( int i = 0; i < searchAllFlightToCity.size(); i++ ) {
             if ( searchAllFlightToCity.get(i).equals(searchFlight) ) {
                 System.out.println(searchAllFlightFromCity.get(i) + " -> " + searchFlight);
             }
         }
     }
-    public void findAllFlightOverCity(List<Flight> listOfFlights, String searchFlight, List<String> searchAllFlightFromCity, List<String> searchAllFlightToCity) {
+    public void findAllFlightOverCity(List<String> searchAllFlightFromCity, List<String> searchAllFlightToCity, String searchFlight) {
         boolean checkToCity = false;
         boolean checkFromCity = false;
         Map<String, String> mapFlight = new HashMap<String, String>();
