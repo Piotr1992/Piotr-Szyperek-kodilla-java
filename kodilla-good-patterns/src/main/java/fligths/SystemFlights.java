@@ -4,15 +4,14 @@ package fligths;
 import java.util.List;
 
 public class SystemFlights {
-
-    private List<List<String>> listOfRoutes;
-    public SystemFlights(final List<List<String>> listOfRoutes) {
-        this.listOfRoutes = listOfRoutes;
+    private List<Flight> listOfFlights;
+    public SystemFlights(final List<Flight> listOfFlights) {
+        this.listOfFlights = listOfFlights;
     }
-    public void addRoute(List<String> Route) {
-        listOfRoutes.add(Route);
+    public void addFlight(Flight flight) {
+        listOfFlights.add(flight);
     }
-    public List<List<String>> getListOfRoutes() {
-        return listOfRoutes;
+    public List<Flight> getListOfFlights() {
+        return listOfFlights;
     }
 }
