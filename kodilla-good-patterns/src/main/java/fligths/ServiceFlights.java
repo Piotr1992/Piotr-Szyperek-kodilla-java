@@ -4,37 +4,24 @@ package fligths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class ServiceFlights {
 
-    private List<Flight> listOfFlights;
-    private String searchFlight;
-    public ServiceFlights(final List<Flight> listOfFlights, final String searchFlight) {
-        this.listOfFlights = listOfFlights;
-        this.searchFlight = searchFlight;
-    }
-    public void findAllFlightFromCity(List<Flight> listOfFlights, String searchFlight) {
-        List<String> searchAllFlightFromCity = listOfFlights.stream().map(s->s.getFromCity()).collect(Collectors.toList());
-        List<String> searchAllFlightToCity = listOfFlights.stream().map(s->s.getToCity()).collect(Collectors.toList());
+    public void findAllFlightFromCity(List<Flight> listOfFlights, String searchFlight, List<String> searchAllFlightFromCity, List<String> searchAllFlightToCity) {
         for ( int i = 0; i < searchAllFlightFromCity.size(); i++ ) {
             if ( searchAllFlightFromCity.get(i).equals(searchFlight) ) {
                 System.out.println(searchFlight + " -> " + searchAllFlightToCity.get(i));
             }
         }
     }
-    public void findAllFlightToCity(List<Flight> listOfFlights, String searchFlight) {
-        List<String> searchAllFlightFromCity = listOfFlights.stream().map(s->s.getFromCity()).collect(Collectors.toList());
-        List<String> searchAllFlightToCity = listOfFlights.stream().map(s->s.getToCity()).collect(Collectors.toList());
+    public void findAllFlightToCity(List<Flight> listOfFlights, String searchFlight, List<String> searchAllFlightFromCity, List<String> searchAllFlightToCity) {
         for ( int i = 0; i < searchAllFlightToCity.size(); i++ ) {
             if ( searchAllFlightToCity.get(i).equals(searchFlight) ) {
                 System.out.println(searchAllFlightFromCity.get(i) + " -> " + searchFlight);
             }
         }
     }
-    public void findAllFlightOverCity(List<Flight> listOfFlights, String searchFlight) {
-        List<String> searchAllFlightFromCity = listOfFlights.stream().map(s->s.getFromCity()).collect(Collectors.toList());
-        List<String> searchAllFlightToCity = listOfFlights.stream().map(s->s.getToCity()).collect(Collectors.toList());
+    public void findAllFlightOverCity(List<Flight> listOfFlights, String searchFlight, List<String> searchAllFlightFromCity, List<String> searchAllFlightToCity) {
         boolean checkToCity = false;
         boolean checkFromCity = false;
         Map<String, String> mapFlight = new HashMap<String, String>();
