@@ -1,9 +1,7 @@
 
 package fligths;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ServiceFlights {
 
@@ -24,7 +22,6 @@ public class ServiceFlights {
     public void findAllFlightOverCity(List<String> searchAllFlightFromCity, List<String> searchAllFlightToCity, String searchFlight) {
         boolean checkToCity = false;
         boolean checkFromCity = false;
-        Map<String, String> mapFlight = new HashMap<String, String>();
         String varFlight = "";
         String[] tabFlight2 = new String[100];
         int ind = 0;
@@ -66,7 +63,7 @@ public class ServiceFlights {
         for(int i=0; i<100; i++) {
             if( tabFlight2[i] != null && !tabFlight2[i].startsWith(" -> ") &&
                 !tabFlight2[i].contains("null") && helpFunction(tabFlight2[i], " -> ") > 1 ) {
-                System.out.println(tabFlight2[i]);
+                    System.out.println(tabFlight2[i]);
             }
         }
     }

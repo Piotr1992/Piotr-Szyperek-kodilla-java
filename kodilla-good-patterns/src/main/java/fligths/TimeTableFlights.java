@@ -24,6 +24,6 @@ public class TimeTableFlights {
         ServiceFlights serviceFlights = new ServiceFlights();
         serviceFlights.findAllFlightFromCity(searchAllFlightFromCity, searchAllFlightToCity, "Warszawa");
         serviceFlights.findAllFlightToCity(searchAllFlightFromCity, searchAllFlightToCity, "Poznań");
-        serviceFlights.findAllFlightOverCity(searchAllFlightFromCity, searchAllFlightToCity, "Warszawa");     //  Poznań
+        serviceFlights.findAllFlightOverCity(searchAllFlightFromCity, searchAllFlightToCity, "Warszawa");
     }
 }
