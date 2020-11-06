@@ -15,8 +15,10 @@ public class TaskList {
         return tasks;
     }
 
-    public void read(List<String> listOfTasks) {
-        System.out.println("Reading: " + listOfTasks.get(listOfTasks.size()-1));
+//    public void read(List<String> listOfTasks) {
+
+    public void read() {
+        System.out.println("Reading: " + tasks.get(tasks.size()-1));
     }
 
     public void addTask(String Task) {
