@@ -4,24 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskList {
-
-    private List<String> tasks;
-
+    List<String> tasks;
     public TaskList() {
         tasks = new ArrayList<>();
     }
-
-    public List<String> getTasks() {
-        return tasks;
+    public void addTask(String newTask) {
+        tasks.add(newTask);
     }
-
-//    public void read(List<String> listOfTasks) {
-
-    public void read() {
-        System.out.println("Reading: " + tasks.get(tasks.size()-1));
-    }
-
-    public void addTask(String Task) {
-        tasks.add(Task);
+    public int showSize() {
+        return tasks.size();
     }
 }
