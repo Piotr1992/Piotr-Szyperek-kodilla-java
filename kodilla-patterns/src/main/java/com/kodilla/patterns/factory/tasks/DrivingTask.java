@@ -11,7 +11,7 @@ public final class DrivingTask implements Task {
     }
     public boolean executeTask() {
         boolean execTask = false;
-        if( taskName != "" && where != "" && using != "" ){
+        if( taskName.length() > 0 && where.length() > 0 && using.length() > 0 ){
             execTask = true;
         }
         return execTask;

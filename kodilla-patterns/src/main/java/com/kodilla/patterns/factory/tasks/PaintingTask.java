@@ -11,7 +11,7 @@ public final class PaintingTask implements Task {
     }
     public boolean executeTask() {
         boolean execTask = false;
-        if( taskName != "" && color != "" && whatToPaint != "" ){
+        if( taskName.length() > 0 && color.length() > 0 && whatToPaint.length() > 0 ){
             execTask = true;
         }
         return execTask;

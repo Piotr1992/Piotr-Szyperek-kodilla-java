@@ -11,7 +11,7 @@ public final class ShoppingTask implements Task {
     }
     public boolean executeTask() {
         boolean execTask = false;
-        if( taskName != "" && whatToBuy != "" && quantity > 0.0 ){
+        if( taskName.length() > 0 && whatToBuy.length() > 0 && quantity > 0.0 ){
             execTask = true;
         }
         return execTask;
