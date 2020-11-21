@@ -5,13 +5,14 @@ import java.util.List;
 
 public class SudokuBoard {
     public List<SudokuRow> listCell = new ArrayList<>();
-    public int[][] tabBoard = new int[10][10];
+    public int[][] tabBoard;
     public int row;
     public int column;
 
-    public SudokuBoard(final int row, final int column) {
+    public SudokuBoard(int row, int column) {
         this.row = row;
         this.column = column;
+        tabBoard = new int[row][column];
         createBoard(row, column);
     }
 
