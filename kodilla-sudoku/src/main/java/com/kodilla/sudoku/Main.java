@@ -5,96 +5,19 @@ import java.util.Scanner;
 
 public class Main {
 
-
-
-/*
-
-    public static int[][] sudoku = {
-            {0,1,0,0,5,6,2,7,0},
-            {0,0,0,0,8,0,0,0,9},
-            {0,7,8,0,0,3,6,0,5},
-            {0,0,0,0,0,4,5,0,1},
-            {8,5,2,0,0,0,7,3,4},
-            {6,0,1,7,0,0,0,0,0},
-            {1,0,6,4,0,0,9,5,0},
-            {3,0,0,0,6,0,0,0,0},
-            {0,2,7,3,9,0,0,8,0}
-    };
-
-    public static int[][] sudoku = {
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0}
-    };
-
-    public static int curr[][] = new int[9][9];
-
-    public static boolean solve(int x, int y) {
-        if (sudoku[x][y] == 0) {
-            for(int i = 1; i <= 9; i++) {
-                if (can_insert(x, y, i)) {
-                    curr[x][y] = i;
-                    if (next(x, y)) return true;
-                }
-            } curr[x][y] = 0; return false;
-        } return next(x, y);
-    }
-
-    public static boolean can_insert(int x, int y, int value) {
-        for(int i = 0; i < 9; i++) {
-            if (value == curr[x][i] || value == curr[i][y] ||
-                    value == curr[x/3*3+i%3][y/3*3+i/3]) return false;
-        } return true;
-    }
-
-    public static boolean next(int x, int y) {
-        if (x == 8 && y == 8) return true;
-        else if (x == 8) return solve(0, y + 1);
-        else return solve(x + 1, y);
-    }
-
-                    */
-
-
-
     public static void main(String[] args) {
-
-
-
-/*        for(int i=0; i<9; i++)
-            for(int j=0; j<9; j++)
-                curr[i][j] = sudoku[i][j];
-        if (solve(0,0)) {
-            for(int i=0; i<9; i++) {
-                for(int j=0; j<9; j++) {
-                    System.out.print(sudoku[i][j] + "\t");
-                } System.out.println();
-            }
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            for(int i=0; i<9; i++) {
-                for(int j=0; j<9; j++) {
-                    System.out.print(curr[i][j] + "\t");
-                } System.out.println();
-            }
-        } else {
-            System.out.println("impossible");
-        }                   */
-
-
 
 /*        boolean gameFinished = false;
         while (!gameFinished) {
             SudokuGame theGame = new SudokuGame();
             gameFinished = theGame.resolveSudoku();
         }               */
+
+
+
+
+
+
 
         int numberSizeRow = 0;
         int numberSizeCol = 0;
@@ -134,21 +57,21 @@ public class Main {
                             inputWord = scannerInputWord.next();
                             if( inputWord.equals("SUDOKU") ) {
                                 boolWord = true;
-                                SudokuGame sG = new SudokuGame(sB);
-                                sG.playGame(numberSizeRow, numberSizeCol);
+                                SudokuGame sG = new SudokuGame(sB, numberSizeRow, numberSizeCol);
+                                sG.playGame();
                             } else if( inputWord.equals("VALUE") ) {
                                 boolWord = true;
-                                SudokuGame sG = new SudokuGame(sB);
+                                SudokuGame sG = new SudokuGame(sB, numberSizeRow, numberSizeCol);
                                 sG.insertValueToBoard(0, 0, 2);
-/*                                sG.insertValueToBoard(1, 1, 2);
-                                sG.insertValueToBoard(2, 2, 3);
+                                sG.insertValueToBoard(2, 2, 2);
+/*                                sG.insertValueToBoard(2, 2, 3);
                                 sG.insertValueToBoard(3, 3, 4);
                                 sG.insertValueToBoard(4, 4, 5);
                                 sG.insertValueToBoard(5, 5, 6);
                                 sG.insertValueToBoard(6, 6, 7);
                                 sG.insertValueToBoard(7, 7, 8);
                                 sG.insertValueToBoard(8, 8, 9);                             */
-                                sG.playGame(numberSizeRow, numberSizeCol);
+                                sG.playGame();
                                 //System.out.println(sB.toString());
 /*                                SudokuGame sG = new SudokuGame();
                                 sG.playGame(inputWord, 0, 0, -1);                       */
