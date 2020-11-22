@@ -11,19 +11,21 @@ public class SudokuGame {
     }
 
     public void playGame(int x, int y) {
-        for(int i = 0; i < x; i++) {
+/*        for(int i = 0; i < x; i++) {
             for(int j = 0; j < y; j++) {
                 if( sB.tabBoard[i][j] == -1 ) {
                     sB.tabBoard[i][j] = 0;
                 }
             }
-        }
+        }                   */
         if (solve(0,0)) {
-            for(int i=0; i<9; i++) {
-                for(int j=0; j<9; j++) {
-                    System.out.print(curr[i][j] + "\t");
-                } System.out.println();
+            for(int i=0; i<x; i++) {
+                for(int j=0; j<y; j++) {
+                    sB.tabBoard[i][j] = curr[i][j];
+                    //System.out.print(curr[i][j] + "\t");
+                } //System.out.println();
             }
+            System.out.println(sB.toString()+"\n\n\n");
         } else {
             System.out.println("impossible");
         }

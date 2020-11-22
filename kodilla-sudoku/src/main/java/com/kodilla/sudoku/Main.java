@@ -139,15 +139,15 @@ public class Main {
                             } else if( inputWord.equals("VALUE") ) {
                                 boolWord = true;
                                 SudokuGame sG = new SudokuGame(sB);
-                                sG.insertValueToBoard(0, 0, 1);
-                                sG.insertValueToBoard(1, 1, 2);
+                                sG.insertValueToBoard(0, 0, 2);
+/*                                sG.insertValueToBoard(1, 1, 2);
                                 sG.insertValueToBoard(2, 2, 3);
                                 sG.insertValueToBoard(3, 3, 4);
                                 sG.insertValueToBoard(4, 4, 5);
                                 sG.insertValueToBoard(5, 5, 6);
                                 sG.insertValueToBoard(6, 6, 7);
                                 sG.insertValueToBoard(7, 7, 8);
-                                sG.insertValueToBoard(8, 8, 9);
+                                sG.insertValueToBoard(8, 8, 9);                             */
                                 sG.playGame(numberSizeRow, numberSizeCol);
                                 //System.out.println(sB.toString());
 /*                                SudokuGame sG = new SudokuGame();
