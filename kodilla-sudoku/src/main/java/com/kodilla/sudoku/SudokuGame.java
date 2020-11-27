@@ -98,7 +98,7 @@ public class SudokuGame {
             }
         }
 
-        for( int i = 0; i < row; i++ ) {
+/*        for( int i = 0; i < row; i++ ) {
             for( int j = 0; j < column; j++ ) {
                 if( sB.tabBoard[i][j] == value ) {
                     countOccurs++;
@@ -107,7 +107,41 @@ public class SudokuGame {
                     check = true;
                 }
             }
+        }               */
+
+        System.out.println("Division: ");
+
+/*        for( int z = 0; z < (int)Math.sqrt(sizeX); z++ ) {
+            for (int i = z*(int)Math.sqrt(sizeX); i < z*(int)Math.sqrt(sizeX)+(int)Math.sqrt(sizeX); i++) {
+                for (int j = z*(int)Math.sqrt(sizeY); i < z*(int)Math.sqrt(sizeY)+(int)Math.sqrt(sizeY); j++) {
+                    System.out.print(sB.tabBoard[i][j]);
+                }
+                System.out.println();
+            }
+        }           */
+
+        int[][][] board = new int[sizeX][sizeX][sizeX];
+        double blockRow = Math.sqrt(row);
+        double blockColumn = Math.sqrt(column);
+
+        for(int z = 0; z < (int)blockRow; z++) {
+            for (int i = z*(int)blockRow; i < (int)blockRow; i++) {
+                for (int j = z*(int)blockColumn; j < (int)blockColumn; j++) {
+                    board[z][i][j] = sB.tabBoard[i][j];
+                }
+            }
         }
+
+        for(int z = 0; z < (int)blockRow; z++) {
+            for (int i = z*(int)blockRow; i < (int)blockRow; i++) {
+                for (int j = z*(int)blockColumn; j < (int)blockColumn; j++) {
+                    System.out.print(board[z][i][j] + " ");
+                }
+                System.out.println();
+            }
+            System.out.println("\n\n\n");
+        }
+
         return check;
     }
 }

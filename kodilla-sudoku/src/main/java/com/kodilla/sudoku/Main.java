@@ -72,6 +72,7 @@ public class Main {
                                 sG.insertValueToBoard(7, 7, 8);
                                 sG.insertValueToBoard(8, 8, 9);                             */
                                 sG.playGame();
+
                                 //System.out.println(sB.toString());
 /*                                SudokuGame sG = new SudokuGame();
                                 sG.playGame(inputWord, 0, 0, -1);                       */
