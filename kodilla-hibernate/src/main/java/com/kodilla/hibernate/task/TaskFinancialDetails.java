@@ -1,29 +1,25 @@
 package com.kodilla.hibernate.task;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
-import java.util.Date;
-
-import com.sun.istack.NotNull;
-
-import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @Entity
-@Table(name = "TASKS")
+@Table(name = "TASKS_FINANCIALS")
 public class TaskFinancialDetails {
 
     private int id;
-    private String description;
-    private Date created;
-    private int duration;
+    private BigDecimal price;
+    private boolean paid;
 
     public TaskFinancialDetails() {
-        this.description = description;
-        this.created = new Date();
-        this.duration = duration;
     }
+
+    public TaskFinancialDetails(BigDecimal price, boolean paid) {
+        this.price = price;
+        this.paid = paid;
+    }
+
     @Id
     @GeneratedValue
     @NotNull
@@ -32,34 +28,25 @@ public class TaskFinancialDetails {
         return id;
     }
 
-    @Column(name = "DESCRIPTION")
-    public String getDescription() {
-        return description;
+    @Column(name = "PRICE")
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    @Column(name = "CREATED")
-    public Date getCreated() {
-        return created;
-    }
-
-    @Column(name = "DURATION")
-    public int getDuration() {
-        return duration;
+    @Column(name = "PAID")
+    public boolean isPaid() {
+        return paid;
     }
 
     private void setId(int id) {
         this.id = id;
     }
 
-    private void setDescription(String description) {
-        this.description = description;
+    private void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
-    private void setCreated(Date created) {
-        this.created = created;
-    }
-
-    private void setDuration(int duration) {
-        this.duration = duration;
+    private void setPaid(boolean paid) {
+        this.paid = paid;
     }
 }
