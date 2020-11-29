@@ -3,23 +3,23 @@ package com.kodilla.hibernate.invoice.dao;
 import com.kodilla.hibernate.invoice.Invoice;
 import com.kodilla.hibernate.invoice.Item;
 import com.kodilla.hibernate.invoice.Product;
+import com.kodilla.hibernate.invoice.dao.InvoiceDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertNotEquals;
 
-public class InvoiceDaoTestSuite {
+@SpringBootTest
+class InvoiceDaoTestSuite {
 
     private static final String NUMBER = "123456789";
 
     @Autowired
     private InvoiceDao invoiceDao;
-    private ItemDao itemDao;
-    private ProductDao productDao;
 
     @Test
     public void testInvoiceDaoSave() {
@@ -38,8 +38,11 @@ public class InvoiceDaoTestSuite {
 
         Invoice invoice = new Invoice(NUMBER, new ArrayList<Item>());
         invoice.getItems().add(first);
-        invoice.getItems().add(second);
-        invoice.getItems().add(third);
+/*        invoice.getItems().add(second);
+        invoice.getItems().add(third);          */
+
+        invoice.setNumber(NUMBER);
+        invoice.setItems(invoice.getItems());
 
         //When
         invoiceDao.save(invoice);
@@ -49,6 +52,6 @@ public class InvoiceDaoTestSuite {
         assertNotEquals(0, id);
 
         //CleanUp
-        //taskListDao.deleteById(id);
+        invoiceDao.deleteById(id);
     }
 }
