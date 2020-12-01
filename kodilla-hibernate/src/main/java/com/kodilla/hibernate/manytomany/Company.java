@@ -5,11 +5,14 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
 @NamedNativeQuery(
         name = "Company.retrieveFirstlyThreeCharsName",
         query = "FROM Company WHERE name like SUBSTR(:FIRSTLYTHREECHARSNAME, 0, 3)",
         resultClass = Company.class
 )
+
+ */
 
 @Entity
 @Table(name = "COMPANIES")
