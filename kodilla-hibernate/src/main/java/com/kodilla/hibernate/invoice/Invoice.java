@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Invoice")
+@Table(name = "INVOICES")
 public class Invoice {
     private int id;
     private String number;
@@ -32,8 +32,12 @@ public class Invoice {
         return number;
     }
 
-    @OneToMany
-    @JoinColumn(name = "ITEM_ID")
+    @OneToMany(
+        targetEntity = Item.class,
+        mappedBy = "invoices",
+        cascade = CascadeType.ALL,
+        fetch = FetchType.EAGER
+    )
     public List<Item> getItems() {
         return items;
     }

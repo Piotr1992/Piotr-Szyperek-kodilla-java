@@ -13,7 +13,6 @@ import java.util.List;
 @Transactional
 @Repository
 public interface InvoiceDao extends CrudRepository<Invoice, Integer> {
-    List<Item> findByItem(Invoice invoice);
 }
 
 

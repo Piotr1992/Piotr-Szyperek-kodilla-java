@@ -29,7 +29,10 @@ public class Item {
         return id;
     }
 
-    @ManyToOne
+    @OneToOne(
+        cascade = CascadeType.ALL,
+        fetch = FetchType.EAGER
+    )
     @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
@@ -65,11 +68,11 @@ public class Item {
         this.price = price;
     }
 
-    private void setQuantity(int quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    private void setValue(BigDecimal value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 }
