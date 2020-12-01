@@ -34,7 +34,6 @@ public class Invoice {
 
     @OneToMany(
         targetEntity = Item.class,
-        mappedBy = "invoices",
         cascade = CascadeType.ALL,
         fetch = FetchType.EAGER
     )

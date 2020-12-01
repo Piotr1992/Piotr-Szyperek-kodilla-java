@@ -36,14 +36,17 @@ class InvoiceDaoTestSuite {
         second.setProduct(books);
         third.setProduct(scissors);
 
-        pen.setId(first.getProduct().getId());
+/*        pen.setId(first.getProduct().getId());
         books.setId(second.getProduct().getId());
-        scissors.setId(third.getProduct().getId());
+        scissors.setId(third.getProduct().getId());         */
 
         Invoice invoice = new Invoice(NUMBER, new ArrayList<Item>());
         invoice.getItems().add(first);
         invoice.getItems().add(second);
         invoice.getItems().add(third);
+
+        first.
+
 
         first.setId(invoice.getId());
         second.setId(invoice.getId());
