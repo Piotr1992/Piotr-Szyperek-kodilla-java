@@ -16,7 +16,6 @@ public class Item {
     private Invoice invoice;
 
     public Item() {
-
     }
 
     public Item(BigDecimal price, int quantity, BigDecimal value) {
@@ -61,10 +60,9 @@ public class Item {
     }
 
     @ManyToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
+        cascade = CascadeType.ALL,
+        fetch = FetchType.EAGER
     )
-    @JoinColumn(name = "INVOICE_ID")
     public Invoice getInvoice() {
         return invoice;
     }
@@ -89,7 +87,7 @@ public class Item {
         this.value = value;
     }
 
-    public void setInvoice() {
+    public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
     }
 }
