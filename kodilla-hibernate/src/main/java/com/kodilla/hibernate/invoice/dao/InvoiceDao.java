@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 
+
 @Transactional
 @Repository
 public interface InvoiceDao extends CrudRepository<Invoice, Integer> {

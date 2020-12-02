@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/*
+
 @Transactional
 @Repository
 public interface TaskDao extends CrudRepository<Task, Integer> {
@@ -26,3 +28,5 @@ public interface TaskDao extends CrudRepository<Task, Integer> {
     @Query
     List<Task> retrieveTasksWithDurationLongerThan(@Param("DURATION") int duration);
 }
+
+*/

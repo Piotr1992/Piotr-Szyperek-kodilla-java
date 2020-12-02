@@ -5,14 +5,11 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-@NamedNativeQuery(
-        name = "Company.retrieveFirstlyThreeCharsName",
-        query = "FROM Company WHERE name like SUBSTR(:FIRSTLYTHREECHARSNAME, 0, 3)",
-        resultClass = Company.class
-)
 
- */
+@NamedQuery(
+    name = "Company.retrieveFirstlyThreeCharsName",
+    query = "FROM Company WHERE name like SUBSTR(:FIRSTLYTHREECHARSNAME, 0, 3)"
+)
 
 @Entity
 @Table(name = "COMPANIES")
@@ -43,7 +40,7 @@ public class Company {
         return name;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
+    @ManyToMany(cascade = CascadeType.ALL)
     public List<Employee> getEmployees() {
         return employees;
     }

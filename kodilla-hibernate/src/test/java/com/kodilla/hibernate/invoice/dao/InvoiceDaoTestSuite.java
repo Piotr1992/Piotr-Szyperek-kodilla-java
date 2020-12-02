@@ -40,7 +40,7 @@ class InvoiceDaoTestSuite {
         invoice.getItems().add(second);
         invoice.getItems().add(third);
 
-        invoice.setNumber(NUMBER);
+//        invoice.setNumber(NUMBER);
         invoice.setItems(invoice.getItems());
 
         //When

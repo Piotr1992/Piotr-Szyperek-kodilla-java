@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 import java.util.List;
 
+
 @Transactional
 @Repository
 public interface CompanyDao extends CrudRepository<Company, Integer> {
-//    @Query(nativeQuery = true)
-//    List<Company> retrieveFirstlyThreeCharsName(@Param("FIRSTLYTHREECHARSNAME") String name);
+    @Query
+    List<Company> retrieveFirstlyThreeCharsName(@Param("FIRSTLYTHREECHARSNAME") String name);
 }
+

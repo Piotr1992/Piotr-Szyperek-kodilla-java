@@ -2,12 +2,10 @@ package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
-import com.kodilla.hibernate.task.Task;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +20,7 @@ class CompanyDaoTestSuite {
     private EmployeeDao employeeDao;
 
     @Test
-    void testSaveManyToMany() {
+    public void testSaveManyToMany() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -67,7 +65,7 @@ class CompanyDaoTestSuite {
         }
     }
 
-/*
+
     //      Task 17.4   -   lastname   -   Employee
     @Test
     void testEmployeeLastName() {
@@ -82,13 +80,12 @@ class CompanyDaoTestSuite {
         listEmployees.getEmployees().add(stephanieClarckson);
         listEmployees.getEmployees().add(lindaKovalsky);
 
-        List<Employee> employeeList = listEmployees.getEmployees();
-        employeeList.add(johnSmith);
-//        employeeList.add(stephanieClarckson);
-//        employeeList.add(lindaKovalsky);
+        johnSmith.getCompanies().add(listEmployees);
+        stephanieClarckson.getCompanies().add(listEmployees);
+        lindaKovalsky.getCompanies().add(listEmployees);
 
-        employeeDao.save((Employee) employeeList);
-        int employeeId = listEmployees.getId();
+        companyDao.save(listEmployees);
+/*        int employeeId = listEmployees.getId();
 
         //When
         List<Employee> lastnameEmployee = employeeDao.retrieveLastName("Clarckson");
@@ -98,15 +95,15 @@ class CompanyDaoTestSuite {
             assertEquals("Clarckson", lastnameEmployee);
         } finally {
             //CleanUp
-            employeeDao.deleteById(employeeId);
-        }
+//            employeeDao.deleteById(employeeId);
+        }               */
 
     }
 
- */
 
 
-    @Test
+
+/*    @Test
     void testCompanyName() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
@@ -150,7 +147,7 @@ class CompanyDaoTestSuite {
         } catch (Exception e) {
             //do nothing
         }
-    }
+    }               */
 
 
 }

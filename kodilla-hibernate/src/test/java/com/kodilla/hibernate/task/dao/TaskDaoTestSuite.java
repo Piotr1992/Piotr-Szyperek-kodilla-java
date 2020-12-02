@@ -3,7 +3,7 @@ package com.kodilla.hibernate.task.dao;
 import com.kodilla.hibernate.task.Task;
 import com.kodilla.hibernate.task.TaskFinancialDetails;
 import com.kodilla.hibernate.tasklist.TaskList;
-import com.kodilla.hibernate.tasklist.dao.TaskListDao;
+//import com.kodilla.hibernate.tasklist.dao.TaskListDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +20,7 @@ class TaskDaoTestSuite {
     private static final String DESCRIPTION = "Test: Learn Hibernate";
     private static final String TODO = "New name list";
 
-    @Autowired
+/*    @Autowired
     private TaskDao taskDao;
 
     @Autowired
@@ -53,7 +53,7 @@ class TaskDaoTestSuite {
         //taskDao.deleteAll();
 
         //When
-        List<Task> readTasks = taskDao.findByDuration(duration);
+/*        List<Task> readTasks = taskDao.findByDuration(duration);
 
         //readTasks.clear();
 
@@ -62,7 +62,7 @@ class TaskDaoTestSuite {
 
         //CleanUp
         int id = readTasks.get(0).getId();
-        taskDao.deleteById(id);
+        taskDao.deleteById(id);                 * /
     }
 
     @Test
@@ -80,7 +80,7 @@ class TaskDaoTestSuite {
 
         //CleanUp
         taskDao.deleteById(id);
-    }
+    }                       */
 
     @Test
     public void testNamedQueries() {
@@ -111,11 +111,11 @@ class TaskDaoTestSuite {
         task3.setTaskList(taskList);
         task4.setTaskList(taskList);
 
-        taskListDao.save(taskList);
-        int id = taskList.getId();
+/*        taskListDao.save(taskList);
+        int id = taskList.getId();                  */
 
         //When
-        List<Task> longTasks = taskDao.retrieveLongTasks();
+/*        List<Task> longTasks = taskDao.retrieveLongTasks();
         List<Task> shortTasks = taskDao.retrieveShortTasks();
         List<Task> enoughTimeTasks = taskDao.retrieveTasksWithEnoughTime();
         List<Task> durationLongerThanTasks = taskDao.retrieveTasksWithDurationLongerThan(6);
@@ -129,7 +129,7 @@ class TaskDaoTestSuite {
         } finally {
             //CleanUp
             taskListDao.deleteById(id);
-        }
+        }                       */
     }
 
 }

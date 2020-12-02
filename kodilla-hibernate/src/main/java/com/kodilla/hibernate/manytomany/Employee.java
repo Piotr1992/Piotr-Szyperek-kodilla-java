@@ -5,10 +5,12 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @NamedQuery(
     name = "Employee.retrieveLastName",
     query = "FROM Employee WHERE lastname = :LASTNAME"
 )
+
 
 @Entity
 @Table(name = "EMPLOYEES")
@@ -47,24 +49,26 @@ public class Employee {
         return lastname;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(
+        cascade = CascadeType.ALL,
+        fetch = FetchType.LAZY)
     public List<Company> getCompanies() {
         return companies;
     }
 
-    private void setCompanies(List<Company> companies) {
+    public void setCompanies(List<Company> companies) {
         this.companies = companies;
     }
 
-    private void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    private void setFirstname(String firstname) {
+    public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
-    private void setLastname(String lastname) {
+    public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 }
