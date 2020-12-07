@@ -27,21 +27,31 @@ class InvoiceDaoTestSuite {
         Product books = new Product("Paper");
         Product scissors = new Product("Scissors");
 
-        Item first = new Item(new BigDecimal(5.5), 100, new BigDecimal(550));
+/*        Item first = new Item(new BigDecimal(5.5), 100, new BigDecimal(550));
         Item second = new Item(new BigDecimal(50), 20, new BigDecimal(1000));
         Item third = new Item(new BigDecimal(10), 50, new BigDecimal(500));
 
         first.setProduct(pen);
         second.setProduct(books);
-        third.setProduct(scissors);
+        third.setProduct(scissors);             */
 
-        Invoice invoice = new Invoice(NUMBER, new ArrayList<Item>());
+/*        Invoice invoice = new Invoice(NUMBER, new ArrayList<Item>());
+
         invoice.getItems().add(first);
         invoice.getItems().add(second);
-        invoice.getItems().add(third);
+        invoice.getItems().add(third);              */
+
+        Invoice invoice = new Invoice(NUMBER, new ArrayList<Product>());
+
+        invoice.getProducts().add(pen);
+        invoice.getProducts().add(books);
+        invoice.getProducts().add(scissors);
 
 //        invoice.setNumber(NUMBER);
-        invoice.setItems(invoice.getItems());
+
+//        invoice.setItems(invoice.getItems());
+
+        invoice.setProducts(invoice.getProducts());
 
         //When
         invoiceDao.save(invoice);

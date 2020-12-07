@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -65,16 +68,15 @@ class CompanyDaoTestSuite {
         }
     }
 
-
     //      Task 17.4   -   lastname   -   Employee
     @Test
-    void testEmployeeLastName() {
+    public void testEmployeeLastName() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
 
-        Company listEmployees = new Company("List of employees");
+        Company listEmployees = new Company("TradeCompany");
 
         listEmployees.getEmployees().add(johnSmith);
         listEmployees.getEmployees().add(stephanieClarckson);
@@ -84,35 +86,32 @@ class CompanyDaoTestSuite {
         stephanieClarckson.getCompanies().add(listEmployees);
         lindaKovalsky.getCompanies().add(listEmployees);
 
-        companyDao.save(listEmployees);
-/*        int employeeId = listEmployees.getId();
+        johnSmith.setCompanies(johnSmith.getCompanies());
+        stephanieClarckson.setCompanies(johnSmith.getCompanies());
+        lindaKovalsky.setCompanies(johnSmith.getCompanies());
 
         //When
-        List<Employee> lastnameEmployee = employeeDao.retrieveLastName("Clarckson");
+        companyDao.save(listEmployees);
+        String companyName = listEmployees.getName();
 
         //Then
         try {
-            assertEquals("Clarckson", lastnameEmployee);
+            assertEquals("TradeCompany", companyName);
         } finally {
             //CleanUp
-//            employeeDao.deleteById(employeeId);
-        }               */
-
+            companyDao.delete(listEmployees);
+        }
     }
 
-
-
-
-/*    @Test
+    //      Task 17.4   -   firstly three chars of name   -   Company
+    @Test
     void testCompanyName() {
-        //Given
-        Employee johnSmith = new Employee("John", "Smith");
-        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
-
+/*        //Given
         Company softwareMachine = new Company("Software Machine");
         Company dataMaesters = new Company("Data Maesters");
         Company greyMatter = new Company("Grey Matter");
+
+        Employee listCompanies = new Employee("John", "Smith");
 
         softwareMachine.getEmployees().add(johnSmith);
         dataMaesters.getEmployees().add(stephanieClarckson);
@@ -146,8 +145,20 @@ class CompanyDaoTestSuite {
             companyDao.deleteById(greyMatterId);
         } catch (Exception e) {
             //do nothing
-        }
-    }               */
+        }                       */
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
