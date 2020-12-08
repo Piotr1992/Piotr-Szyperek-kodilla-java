@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertNotEquals;
@@ -86,66 +84,56 @@ class CompanyDaoTestSuite {
         stephanieClarckson.getCompanies().add(listEmployees);
         lindaKovalsky.getCompanies().add(listEmployees);
 
-        johnSmith.setCompanies(johnSmith.getCompanies());
-        stephanieClarckson.setCompanies(johnSmith.getCompanies());
-        lindaKovalsky.setCompanies(johnSmith.getCompanies());
-
         //When
-        companyDao.save(listEmployees);
-        String companyName = listEmployees.getName();
+        employeeDao.save(johnSmith);
+        employeeDao.save(stephanieClarckson);
+        employeeDao.save(lindaKovalsky);
+        List<Employee> searchLastNameEmployee = employeeDao.retrieveLastName("Clarckson");
 
         //Then
         try {
-            assertEquals("TradeCompany", companyName);
+            assertEquals(46, searchLastNameEmployee.size());
         } finally {
             //CleanUp
-            companyDao.delete(listEmployees);
+            employeeDao.delete(johnSmith);
+            employeeDao.delete(stephanieClarckson);
+            employeeDao.delete(lindaKovalsky);
         }
     }
 
     //      Task 17.4   -   firstly three chars of name   -   Company
     @Test
-    void testCompanyName() {
-/*        //Given
-        Company softwareMachine = new Company("Software Machine");
-        Company dataMaesters = new Company("Data Maesters");
-        Company greyMatter = new Company("Grey Matter");
+    public void testCompanyName() {
+        //Given
+        Company firstCompany = new Company("First");
+        Company secondCompany = new Company("Second");
+        Company thirdCompany = new Company("Third");
 
-        Employee listCompanies = new Employee("John", "Smith");
+        Employee listCompany = new Employee("name of employee", "surname of employee");
 
-        softwareMachine.getEmployees().add(johnSmith);
-        dataMaesters.getEmployees().add(stephanieClarckson);
-        dataMaesters.getEmployees().add(lindaKovalsky);
-        greyMatter.getEmployees().add(johnSmith);
-        greyMatter.getEmployees().add(lindaKovalsky);
+        listCompany.getCompanies().add(firstCompany);
+        listCompany.getCompanies().add(secondCompany);
+        listCompany.getCompanies().add(thirdCompany);
 
-        johnSmith.getCompanies().add(softwareMachine);
-        johnSmith.getCompanies().add(greyMatter);
-        stephanieClarckson.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(greyMatter);
+        firstCompany.getEmployees().add(listCompany);
+        secondCompany.getEmployees().add(listCompany);
+        thirdCompany.getEmployees().add(listCompany);
 
         //When
-        companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
-        companyDao.save(dataMaesters);
-        int dataMaestersId = dataMaesters.getId();
-        companyDao.save(greyMatter);
-        int greyMatterId = greyMatter.getId();
+        companyDao.save(firstCompany);
+        companyDao.save(secondCompany);
+        companyDao.save(thirdCompany);
+        List<Company> searchNameCompany = companyDao.retrieveFirstlyThreeCharsName("sec");
 
         //Then
-        assertNotEquals(0, softwareMachineId);
-        assertNotEquals(0, dataMaestersId);
-        assertNotEquals(0, greyMatterId);
-
-        //CleanUp
         try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }                       */
+            assertEquals(46, searchNameCompany.size());
+        } finally {
+            //CleanUp
+            companyDao.delete(firstCompany);
+            companyDao.delete(secondCompany);
+            companyDao.delete(thirdCompany);
+        }
     }
 
 

@@ -5,9 +5,10 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @NamedNativeQuery(
     name = "Company.retrieveFirstlyThreeCharsName",
-    query = "SELECT name FROM COMPANIES WHERE name like '%'+SUBSTR(:FIRSTLYTHREECHARSNAME, 0, 3)+'%'",
+    query = "SELECT * FROM COMPANIES WHERE name like SUBSTR(:FIRSTLYTHREECHARSNAME, 0, 3)+'%'",
     resultClass = Company.class
 )
 
