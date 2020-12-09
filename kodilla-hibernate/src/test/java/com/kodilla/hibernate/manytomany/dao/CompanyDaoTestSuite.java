@@ -92,7 +92,7 @@ class CompanyDaoTestSuite {
 
         //Then
         try {
-            assertEquals(46, searchLastNameEmployee.size());
+            assertEquals(1, searchLastNameEmployee.size());
         } finally {
             //CleanUp
             employeeDao.delete(johnSmith);
