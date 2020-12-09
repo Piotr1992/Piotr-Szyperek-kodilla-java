@@ -127,7 +127,7 @@ class CompanyDaoTestSuite {
 
         //Then
         try {
-            assertEquals(4, searchNameCompany.size());
+            assertEquals(1, searchNameCompany.size());
         } finally {
             //CleanUp
             companyDao.delete(firstCompany);
