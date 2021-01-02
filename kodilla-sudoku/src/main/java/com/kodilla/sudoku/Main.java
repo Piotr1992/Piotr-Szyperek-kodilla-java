@@ -28,6 +28,7 @@ public class Main {
         int equalPart = 0;
         int equalPartRow = 0;
         int equalPartCol = 0;
+        int ind = 0;
 
         while( !boolRow ) {
             System.out.println("Input size rows: ");
@@ -47,11 +48,10 @@ public class Main {
                     }
                     if ( boolColumn ) {
 
+/*                        int tab[][] = new int[numberSizeRow][numberSizeCol];
 
-
-                        int tab[][] = new int[numberSizeRow][numberSizeCol];
-
-                        //int [][][]marks;
+                        int ii = 0;
+                        int jj = 0;
 
                         for(int i=0; i<numberSizeRow; i++) {
                             for(int j=0; j<numberSizeCol; j++) {
@@ -64,32 +64,58 @@ public class Main {
 
                         equalPart = (int)Math.sqrt(numberSizeRow);
 
+                        int marks[][][] = new int[numberSizeRow][equalPart][equalPart];
+
                         for (int z = 0; z < numberSizeRow; z+=equalPart) {
                             do {
                                 for (int i = equalPartRow; i < equalPart; i++) {
                                     for (int j = equalPartCol - equalPartRow + z; j < equalPart - equalPartRow + z; j++) {
-                                        System.out.print(tab[i][j] + "\t");
-                                        //marks = new int[2][2][2];
+                                        //System.out.print(tab[i][j] + "\t");
+                                        marks[ind][ii][jj] = tab[i][j];
+                                        jj++;
                                     }
-                                    System.out.println();
+                                    jj = 0;
+                                    ii++;
                                 }
+                                ii = 0;
+                                ind++;
                                 equalPartRow = equalPart;
                                 equalPartCol = equalPart;
-                                equalPart += (int) Math.sqrt(numberSizeRow);
+                                equalPart += (int)Math.sqrt(numberSizeRow);
                             } while (numberSizeRow >= equalPart);
                             equalPartRow = 0;
                             equalPartCol = 0;
                             equalPart = (int)Math.sqrt(numberSizeRow);
                         }
 
-/*                        SudokuBoard sB = new SudokuBoard(numberSizeRow, numberSizeCol);
+                        for(int i=0; i<numberSizeRow; i++) {
+
+                            System.out.println("[" + i + "] = ");
+
+                            for (int j = 0; j < equalPart; j++) {
+                                for (int k = 0; k < equalPart; k++) {
+
+                                    System.out.print(marks[i][j][k] + "\t");
+
+                                }
+                                System.out.println();
+                            }
+                            System.out.println("\n");
+                        }                                               */
+
+
+
+
+
+
+                        SudokuBoard sB = new SudokuBoard(numberSizeRow, numberSizeCol);
                         System.out.println(sB.toString());
                         System.out.println("Choose one from below options:");
                         System.out.println("Input the word \"SUDOKU\" and press key \"ENTER\" - program to solve sudoku and display solution!");
                         System.out.println("Input the word \"VALUE\" and press key \"ENTER\" - you set the value to a board cell!");
                         while( !boolWord ) {
                             inputWord = scannerInputWord.next();
-/*                            if( inputWord.equals("SUDOKU") ) {
+                            if( inputWord.equals("SUDOKU") ) {
                                 boolWord = true;
                                 SudokuGame sG = new SudokuGame(sB, numberSizeRow, numberSizeCol);
                                 sG.playGame();
@@ -104,16 +130,16 @@ public class Main {
                                 sG.insertValueToBoard(5, 5, 6);
                                 sG.insertValueToBoard(6, 6, 7);
                                 sG.insertValueToBoard(7, 7, 8);
-                                sG.insertValueToBoard(8, 8, 9);                             * /
+                                sG.insertValueToBoard(8, 8, 9);                     */
                                 sG.playGame();
 
-                                //System.out.println(sB.toString());
-/*                                SudokuGame sG = new SudokuGame();
-                                sG.playGame(inputWord, 0, 0, -1);                       * /
+                                System.out.println(sB.toString());
+                                //SudokuGame sG = new SudokuGame();
+                                //sG.playGame(inputWord, 0, 0, -1);
                             } else {
                                 System.out.println("Please input the word \"SUDOKU\" or \"VALUE\" and press key \"ENTER\"!");
                             }
-                        }                       */
+                        }
                     } else {
                         System.out.println("Please enter a size for column whose square root will return an integer and contain at least 4!");
                     }
