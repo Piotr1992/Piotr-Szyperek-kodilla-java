@@ -1,16 +1,24 @@
 package com.kodilla.hibernate.manytomany;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-    name = "Company.retrieveFirstlyThreeCharsName",
-   query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :FIRSTLYTHREECHARSNAME",
-    resultClass = Company.class
-)
-
+@NamedNativeQueries({
+    @NamedNativeQuery(
+            name = "Company.retrieveFirstlyThreeCharsName",
+            query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :FIRSTLYTHREECHARSNAME",
+            resultClass = Company.class
+    ),
+    @NamedNativeQuery(
+            name = "Company.retrieveCompanyName",
+            query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%', :COMPANYNAME, '%')",
+            resultClass = Company.class
+    )
+})
 @Entity
 @Table(name = "COMPANIES")
 public final class Company {

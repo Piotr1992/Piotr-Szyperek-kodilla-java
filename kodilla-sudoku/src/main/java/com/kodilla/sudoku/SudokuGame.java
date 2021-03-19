@@ -28,17 +28,75 @@ public class SudokuGame {
                 curr[i][j] = sB.tabBoard[i][j];
             }
         }
+
+
+
+/*        int equalPart = (int)Math.sqrt(sizeX);
+        int ind = 0;
+        int equalPartRow = 0;
+        int equalPartCol = 0;
+
+        int marks[][][] = new int[sizeX][equalPart][equalPart];
+
+        int ii = 0;
+        int jj = 0;                 */
+
         if (solve(0,0)) {
             for(int i = 0; i < sizeX; i++) {
                 for(int j = 0; j < sizeY; j++) {
                     sB.tabBoard[i][j] = curr[i][j];
-                    //System.out.print(curr[i][j] + "\t");
-                } //System.out.println();
+                    System.out.print(curr[i][j] + "\t");
+                } System.out.println();
             }
-            System.out.println(sB.toString()+"\n\n\n");
+            //System.out.println(sB.toString()+"\n\n\n");
         } else {
             System.out.println("impossible");
         }
+
+
+
+/*        for (int z = 0; z < sizeX; z+=equalPart) {
+            do {
+                for (int i = sizeX; i < equalPart; i++) {
+                    for (int j = sizeY - sizeX + z; j < equalPart - sizeX + z; j++) {
+                        //System.out.print(sB.tabBoard[i][j] + "\t");
+                        marks[ind][ii][jj] = sB.tabBoard[i][j];
+                        jj++;
+                    }
+                    jj = 0;
+                    ii++;
+                }
+                ii = 0;
+                ind++;
+                equalPartRow = equalPart;
+                equalPartCol = equalPart;
+                equalPart += (int)Math.sqrt(sizeX);
+            } while (sizeX >= equalPart);
+            equalPartRow = 0;
+            equalPartCol = 0;
+            equalPart = (int)Math.sqrt(sizeX);
+
+        }
+
+
+
+        for(int i=0; i<sizeX; i++) {
+
+            System.out.println("[" + i + "] = ");
+
+            for (int j = 0; j < equalPart; j++) {
+                for (int k = 0; k < equalPart; k++) {
+
+                    System.out.print(marks[i][j][k] + "\t");
+
+                }
+                System.out.println();
+            }
+            System.out.println("\n");
+        }                               */
+
+
+
     }
 
     public static boolean solve(int x, int y) {
@@ -69,16 +127,29 @@ public class SudokuGame {
         else return solve(x + 1, y);
     }
 
-    public void insertValueToBoard(int x, int y, int value) {
-        if( !checkNumber(x, y, value) ){
+    public void insertValueToBoard(int x, int y, int value, int tab[][]) {
+        if( !checkNumber(x, y, value, tab) ) {
             sB.setValue(x, y, value);
+            checkNumber(x, y, value, tab);
             System.out.println(sB.toString());
+
+/*            System.out.println("CHECK START!");
+
+            for (int i = 0; i < sizeX; i++) {
+                for (int j = 0; j < sizeY; j++) {
+                    System.out.print(sB.tabBoard[i][j]);
+                }
+                System.out.println();
+            }
+
+            System.out.println("CHECK END!");               */
+
         } else {
-            System.out.println("Please other number!");
+            System.out.println("Please give other number because this number is already in this column or row or block!\n\n");
         }
     }
 
-    public boolean checkNumber(int row, int column, int value) {
+    public boolean checkNumber(int row, int column, int value, int tab[][]) {
         boolean check = false;
         int countOccurs = 0;
         for( int j = 0; j < column; j++ ) {
@@ -98,29 +169,163 @@ public class SudokuGame {
             }
         }
 
-/*        for( int i = 0; i < row; i++ ) {
-            for( int j = 0; j < column; j++ ) {
-                if( sB.tabBoard[i][j] == value ) {
-                    countOccurs++;
-                }
-                if( countOccurs > 0 ) {
-                    check = true;
-                }
+
+
+        int equalPart = (int)Math.sqrt(sizeX);
+        int ind = 0;
+        int equalPartRow = 0;
+        int equalPartCol = 0;
+
+        int tab3[][][] = new int[sizeX][equalPart][equalPart];
+
+        int ii = 0;
+        int jj = 0;
+
+
+
+        System.out.println("CHECK START111!");
+
+        for (int i = 0; i < sizeX; i++) {
+            for (int j = 0; j < sizeY; j++) {
+                System.out.print(sB.tabBoard[i][j]);
             }
-        }               */
+            System.out.println();
+        }
 
-        System.out.println("Division: ");
+        System.out.println("CHECK END111!");
 
-/*        for( int z = 0; z < (int)Math.sqrt(sizeX); z++ ) {
-            for (int i = z*(int)Math.sqrt(sizeX); i < z*(int)Math.sqrt(sizeX)+(int)Math.sqrt(sizeX); i++) {
-                for (int j = z*(int)Math.sqrt(sizeY); i < z*(int)Math.sqrt(sizeY)+(int)Math.sqrt(sizeY); j++) {
-                    System.out.print(sB.tabBoard[i][j]);
+
+
+        for (int z = 0; z < sizeX; z+=equalPart) {
+            do {
+                for (int i = sizeX; i < equalPart; i++) {
+                    for (int j = sizeY - sizeX + z; j < equalPart - sizeX + z; j++) {
+                        //System.out.print(curr[i][j] + "\t");
+                        tab3[ind][ii][jj] = tab[i][j];
+                        jj++;
+                    }
+                    jj = 0;
+                    ii++;
+                }
+                System.out.println();
+                ii = 0;
+                ind++;
+                equalPartRow = equalPart;
+                equalPartCol = equalPart;
+                equalPart += (int)Math.sqrt(sizeX);
+            } while (sizeX >= equalPart);
+            equalPartRow = 0;
+            equalPartCol = 0;
+            equalPart = (int)Math.sqrt(sizeX);
+
+        }
+
+
+        System.out.println("CHECK START222!");
+
+        for (int i = 0; i < sizeX; i++) {
+            for (int j = 0; j < sizeY; j++) {
+                System.out.print(sB.tabBoard[i][j]);
+            }
+            System.out.println();
+        }
+
+        System.out.println("CHECK END222!");
+
+
+
+        for(int i=0; i<sizeX; i++) {
+
+            System.out.println("[" + i + "] = ");
+
+            for (int j = 0; j < equalPart; j++) {
+                for (int k = 0; k < equalPart; k++) {
+
+                    System.out.print(tab3[i][j][k] + "\t");
+
                 }
                 System.out.println();
             }
-        }           */
+            System.out.println("\n");
+        }
 
-        int[][][] board = new int[sizeX][sizeX][sizeX];
+
+
+        System.out.println("CHECK START333!");
+
+        for (int i = 0; i < sizeX; i++) {
+            for (int j = 0; j < sizeY; j++) {
+                System.out.print(sB.tabBoard[i][j]);
+            }
+            System.out.println();
+        }
+
+        System.out.println("CHECK END333!");
+
+
+
+/*        for( int i = 0; i < sizeX; i++ ) {
+            for( int j = 0; j < sizeY; j++ ) {
+                System.out.print(sB.tabBoard[i][j]);
+            }
+            System.out.println();
+        }                       */
+
+
+
+
+/*        int equalPart = (int)Math.sqrt(row);
+        int ind = 0;
+        int equalPartRow = 0;
+        int equalPartCol = 0;
+
+        int marks[][][] = new int[row][equalPart][equalPart];
+
+        int ii = 0;
+        int jj = 0;
+
+        for (int z = 0; z < row; z+=equalPart) {
+            do {
+                for (int i = row; i < equalPart; i++) {
+                    for (int j = column - row + z; j < equalPart - row + z; j++) {
+                        System.out.print(sB.tabBoard[i][j] + "\t");
+                        //marks[ind][ii][jj] = sB.tabBoard[i][j];
+                        jj++;
+                    }
+                    jj = 0;
+                    ii++;
+                }
+                ii = 0;
+                ind++;
+                equalPartRow = equalPart;
+                equalPartCol = equalPart;
+                equalPart += (int)Math.sqrt(row);
+            } while (row >= equalPart);
+            equalPartRow = 0;
+            equalPartCol = 0;
+            equalPart = (int)Math.sqrt(row);
+        }                                   */
+
+/*        for(int i=0; i<row; i++) {
+
+            System.out.println("[" + i + "] = ");
+
+            for (int j = 0; j < equalPart; j++) {
+                for (int k = 0; k < equalPart; k++) {
+
+                    System.out.print(marks[i][j][k] + "\t");
+
+                }
+                System.out.println();
+            }
+            System.out.println("\n");
+        }                   */
+
+
+
+
+
+/*        int[][][] board = new int[sizeX][sizeX][sizeX];
         double blockRow = Math.sqrt(row);
         double blockColumn = Math.sqrt(column);
 
@@ -140,8 +345,13 @@ public class SudokuGame {
                 System.out.println();
             }
             System.out.println("\n\n\n");
-        }
+        }                       */
 
         return check;
     }
+
+    int[][] returnArray() {
+        return curr;
+    }
+
 }

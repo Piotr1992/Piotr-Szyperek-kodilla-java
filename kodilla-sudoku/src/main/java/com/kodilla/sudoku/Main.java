@@ -21,7 +21,7 @@ public class Main {
         boolean boolColumn = false;
         String inputWord = "";
         Scanner scannerInputWord = new Scanner(System.in);
-        boolean boolWord = true;
+        boolean boolWord = false;
 
         System.out.println("Remember - size must be a number whose square root will return an integer and contain at least 4!");
 
@@ -115,15 +115,17 @@ public class Main {
                         System.out.println("Input the word \"VALUE\" and press key \"ENTER\" - you set the value to a board cell!");
                         while( !boolWord ) {
                             inputWord = scannerInputWord.next();
+                            SudokuGame sG = new SudokuGame(sB, numberSizeRow, numberSizeCol);
                             if( inputWord.equals("SUDOKU") ) {
                                 boolWord = true;
-                                SudokuGame sG = new SudokuGame(sB, numberSizeRow, numberSizeCol);
+//                                SudokuGame sG = new SudokuGame(sB, numberSizeRow, numberSizeCol);
                                 sG.playGame();
+//                                System.out.println(sB.toString());
                             } else if( inputWord.equals("VALUE") ) {
                                 boolWord = true;
-                                SudokuGame sG = new SudokuGame(sB, numberSizeRow, numberSizeCol);
-                                sG.insertValueToBoard(0, 0, 2);
-                                sG.insertValueToBoard(1, 1, 2);
+//                                SudokuGame sG = new SudokuGame(sB, numberSizeRow, numberSizeCol);
+                                sG.insertValueToBoard(0, 0, 2, sB.tabBoard);
+//                                sG.insertValueToBoard(1, 0, 2, sB.tabBoard);
 /*                                sG.insertValueToBoard(2, 2, 3);
                                 sG.insertValueToBoard(3, 3, 4);
                                 sG.insertValueToBoard(4, 4, 5);
@@ -131,8 +133,7 @@ public class Main {
                                 sG.insertValueToBoard(6, 6, 7);
                                 sG.insertValueToBoard(7, 7, 8);
                                 sG.insertValueToBoard(8, 8, 9);                     */
-                                sG.playGame();
-
+                                //sG.playGame();
                                 System.out.println(sB.toString());
                                 //SudokuGame sG = new SudokuGame();
                                 //sG.playGame(inputWord, 0, 0, -1);

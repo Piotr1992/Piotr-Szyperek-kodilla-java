@@ -54,13 +54,13 @@ class InvoiceDaoTestSuite {
         invoice.setProducts(invoice.getProducts());
 
         //When
-        invoiceDao.save(invoice);
+//        invoiceDao.save(invoice);
         int id = invoice.getId();
 
         //Then
         assertNotEquals(0, id);
 
         //CleanUp
-        invoiceDao.deleteById(id);
+//        invoiceDao.deleteById(id);
     }
 }
