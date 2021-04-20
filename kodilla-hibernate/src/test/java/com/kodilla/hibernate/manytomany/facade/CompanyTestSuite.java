@@ -9,21 +9,26 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
-public class ComEmpServiceTestSuite {
+public class CompanyTestSuite {
 
-//    @Autowired
-//    private ComEmpService comEmpService;
+    @Autowired
+    private CompanyService companyService;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     @Autowired
     private CompanyDao companyDao;
 
     @Autowired
     private EmployeeDao employeeDao;
+
 
 
     @Test
@@ -34,7 +39,7 @@ public class ComEmpServiceTestSuite {
         Employee stephanieClarckson = new Employee("Stephanie", "Wolska");
         Employee lindaKovalsky = new Employee("Linda", "Nowak");
 
-/*        Company listEmployees = new Company("TradeCompany");
+        Company listEmployees = new Company("TradeCompany");
 
         listEmployees.getEmployees().add(johnSmith);
         listEmployees.getEmployees().add(stephanieClarckson);
@@ -42,13 +47,8 @@ public class ComEmpServiceTestSuite {
 
         johnSmith.getCompanies().add(listEmployees);
         stephanieClarckson.getCompanies().add(listEmployees);
-        lindaKovalsky.getCompanies().add(listEmployees);                */
+        lindaKovalsky.getCompanies().add(listEmployees);
 
-/*        employeeDao.retrieveLastName2(johnSmith.getLastname());
-        employeeDao.retrieveLastName2(stephanieClarckson.getLastname());
-        employeeDao.retrieveLastName2(lindaKovalsky.getLastname());             */
-
-        employeeDao.deleteAll();
         //When
         employeeDao.save(johnSmith);
         employeeDao.save(stephanieClarckson);
@@ -56,13 +56,7 @@ public class ComEmpServiceTestSuite {
 
         List<Employee> searchLastNameEmployee = employeeDao.retrieveSubStringLastName("lsk");
 
-//        System.out.println(" -> " + searchLastNameEmployee.size());
-
-        System.out.println(searchLastNameEmployee.get(0).getLastname());
-        System.out.println(searchLastNameEmployee.get(1).getLastname());
-//        System.out.println(searchLastNameEmployee.get(2).getLastname());
-
-/*        //Then
+        //Then
         try {
             Assertions.assertEquals(2, searchLastNameEmployee.size());
         } finally {
@@ -70,17 +64,21 @@ public class ComEmpServiceTestSuite {
             employeeDao.delete(johnSmith);
             employeeDao.delete(stephanieClarckson);
             employeeDao.delete(lindaKovalsky);
-        }           */
+        }
+
     }
+
+
 
     @Test
     public void testCompanyName() {
+
         //Given
-        Company firstCompany = new Company("First");
+        Company firstCompany = new Company("One");
         Company secondCompany = new Company("Second");
         Company thirdCompany = new Company("Third");
 
-/*        Employee listCompany = new Employee("name of employee", "surname of employee");
+        Employee listCompany = new Employee("name of employee", "surname of employee");
 
         listCompany.getCompanies().add(firstCompany);
         listCompany.getCompanies().add(secondCompany);
@@ -88,29 +86,52 @@ public class ComEmpServiceTestSuite {
 
         firstCompany.getEmployees().add(listCompany);
         secondCompany.getEmployees().add(listCompany);
-        thirdCompany.getEmployees().add(listCompany);                   */
+        thirdCompany.getEmployees().add(listCompany);
 
-        companyDao.deleteAll();
         //When
         companyDao.save(firstCompany);
         companyDao.save(secondCompany);
         companyDao.save(thirdCompany);
         List<Company> searchNameCompany = companyDao.retrieveCompanyName("ir");
 
-        System.out.println(searchNameCompany.get(0).getName());
-        System.out.println(searchNameCompany.get(1).getName());
-//        System.out.println(searchNameCompany.get(2).getName());
-
-/*        //Then
+        //Then
         try {
-            Assertions.assertEquals(2, searchNameCompany.size());
+            Assertions.assertEquals(1, searchNameCompany.size());
         } finally {
             //CleanUp
             companyDao.delete(firstCompany);
             companyDao.delete(secondCompany);
             companyDao.delete(thirdCompany);
-        }           */
+        }
     }
 
+
+
+    @Test
+    public void testShopServiceSubmitOrder() {
+        List<Company> helpListCompany = new ArrayList<>();
+        helpListCompany.add(new Company("One"));
+        helpListCompany.add(new Company("Second"));
+        helpListCompany.add(new Company("Third"));
+
+        List<Employee> helpListEmployee = new ArrayList<>();
+        helpListEmployee.add(new Employee("John", "Kowalski"));
+        helpListEmployee.add(new Employee("Stephanie", "Wolska"));
+        helpListEmployee.add(new Employee("Linda", "Nowak"));
+
+        int numberSearchCompany = companyService.searchCompany(helpListCompany, "ir").size();
+        int numberSearchEmployee = employeeService.searchEmployee(helpListEmployee, "lsk").size();
+        System.out.println("Registering new order, ID: " + numberSearchCompany);
+        if (numberSearchCompany > 0) {
+            System.out.println("Search Company!");
+        } else {
+            throw new IllegalStateException("Not found Company!");
+        }
+        if (numberSearchEmployee > 0) {
+            System.out.println("Search Employees!");
+        } else {
+            System.out.println("Not found Employees!");
+        }
+    }
 
 }
