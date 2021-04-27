@@ -10,11 +10,15 @@ public class MedianAdapter extends MedianAdaptee implements Classifier {
 
     @Override
     public int publicationYearMedian(Set<Book> bookSet) {
-        com.kodilla.patterns2.adapter.bookclassifier.libraryb.Book bookb = new com.kodilla.patterns2.adapter.bookclassifier.libraryb.Book("Eric Matthes", "Python", 2019);
+
+
+
         Map<BookSignature, com.kodilla.patterns2.adapter.bookclassifier.libraryb.Book> setBooks = new HashMap<>();
+
         for (com.kodilla.patterns2.adapter.bookclassifier.librarya.Book booka : bookSet) {
-            setBooks.put(new BookSignature(booka.getSignature()), bookb);
+            setBooks.put(new BookSignature(booka.getSignature()), new com.kodilla.patterns2.adapter.bookclassifier.libraryb.Book(booka.getAuthor(), booka.getTitle(), booka.getPublicationYear()));
         }
+
         return (int)medianPublicationYear(setBooks);
     }
 

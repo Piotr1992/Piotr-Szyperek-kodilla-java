@@ -33,7 +33,7 @@ class MedianAdapterTestSuite {
 
         // Then
         System.out.println(medianPublicationYear);
-        assertEquals(6044, medianPublicationYear,0);                  // [4]
+        assertEquals(2014, medianPublicationYear,0);                  // [4]
     }
 
 
