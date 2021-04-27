@@ -5,7 +5,6 @@ import com.kodilla.patterns2.adapter.bookclassifier.libraryb.BookSignature;
 import com.kodilla.patterns2.adapter.bookclassifier.libraryb.BookStatistics;
 import com.kodilla.patterns2.adapter.bookclassifier.libraryb.Statistics;
 
-import java.math.BigDecimal;
 import java.util.Map;
 
 public class MedianAdaptee extends Statistics implements BookStatistics {
@@ -15,6 +14,5 @@ public class MedianAdaptee extends Statistics implements BookStatistics {
         Statistics statistics = new Statistics();
         return statistics.medianPublicationYear(books);
     }
-
 
 }

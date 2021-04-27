@@ -25,7 +25,6 @@ public class Statistics implements BookStatistics {
             n++;
         }
         Arrays.sort(years);
-        System.out.println(years);
         if (years.length % 2 == 0) {
             return years[(int) (years.length / 2 + 0.5)];
         } else {
