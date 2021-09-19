@@ -50,6 +50,10 @@ public class SudokuBoard {
         }
         return board;
     }
+
+    public int[][] returnArray() {
+        return tabBoard;
+    }
 }
 
 

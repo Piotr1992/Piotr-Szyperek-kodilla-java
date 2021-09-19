@@ -45,8 +45,8 @@ public class SudokuGame {
             for(int i = 0; i < sizeX; i++) {
                 for(int j = 0; j < sizeY; j++) {
                     sB.tabBoard[i][j] = curr[i][j];
-                    System.out.print(curr[i][j] + "\t");
-                } System.out.println();
+                    //System.out.print(curr[i][j] + "\t");
+                } //System.out.println();
             }
             //System.out.println(sB.toString()+"\n\n\n");
         } else {
@@ -131,7 +131,7 @@ public class SudokuGame {
         if( !checkNumber(x, y, value, tab) ) {
             sB.setValue(x, y, value);
             checkNumber(x, y, value, tab);
-            System.out.println(sB.toString());
+//            System.out.println(sB.toString());
 
 /*            System.out.println("CHECK START!");
 
@@ -183,7 +183,7 @@ public class SudokuGame {
 
 
 
-        System.out.println("CHECK START111!");
+/*        System.out.println("CHECK START111!");
 
         for (int i = 0; i < sizeX; i++) {
             for (int j = 0; j < sizeY; j++) {
@@ -192,7 +192,7 @@ public class SudokuGame {
             System.out.println();
         }
 
-        System.out.println("CHECK END111!");
+        System.out.println("CHECK END111!");                */
 
 
 
@@ -207,7 +207,7 @@ public class SudokuGame {
                     jj = 0;
                     ii++;
                 }
-                System.out.println();
+//                System.out.println();
                 ii = 0;
                 ind++;
                 equalPartRow = equalPart;
@@ -221,7 +221,7 @@ public class SudokuGame {
         }
 
 
-        System.out.println("CHECK START222!");
+/*        System.out.println("CHECK START222!");
 
         for (int i = 0; i < sizeX; i++) {
             for (int j = 0; j < sizeY; j++) {
@@ -230,11 +230,11 @@ public class SudokuGame {
             System.out.println();
         }
 
-        System.out.println("CHECK END222!");
+        System.out.println("CHECK END222!");            */
 
 
 
-        for(int i=0; i<sizeX; i++) {
+/*        for(int i=0; i<sizeX; i++) {
 
             System.out.println("[" + i + "] = ");
 
@@ -247,11 +247,11 @@ public class SudokuGame {
                 System.out.println();
             }
             System.out.println("\n");
-        }
+        }               */
 
 
 
-        System.out.println("CHECK START333!");
+/*        System.out.println("CHECK START333!");
 
         for (int i = 0; i < sizeX; i++) {
             for (int j = 0; j < sizeY; j++) {
@@ -260,7 +260,7 @@ public class SudokuGame {
             System.out.println();
         }
 
-        System.out.println("CHECK END333!");
+        System.out.println("CHECK END333!");                */
 
 
 
