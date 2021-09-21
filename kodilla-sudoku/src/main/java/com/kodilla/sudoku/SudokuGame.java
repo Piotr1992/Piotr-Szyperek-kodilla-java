@@ -1,11 +1,14 @@
 package com.kodilla.sudoku;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class SudokuGame {
-    public static int curr[][];// = new int[9][9];
+    public static int curr[][];
     public static SudokuBoard sB;
-    public boolean resolveSudoku(){
-        return true;
-    }
     public static int sizeX;
     public static int sizeY;
     public SudokuGame(final SudokuBoard sB, int sizeX, int sizeY) {
@@ -16,97 +19,32 @@ public class SudokuGame {
     }
 
     public void playGame() {
-/*        for(int i = 0; i < x; i++) {
-            for(int j = 0; j < y; j++) {
-                if( sB.tabBoard[i][j] == -1 ) {
-                    sB.tabBoard[i][j] = 0;
-                }
-            }
-        }                   */
         for (int i = 0; i < sizeX; i++) {
             for (int j = 0; j < sizeY; j++) {
                 curr[i][j] = sB.tabBoard[i][j];
             }
         }
 
-
-
-/*        int equalPart = (int)Math.sqrt(sizeX);
-        int ind = 0;
-        int equalPartRow = 0;
-        int equalPartCol = 0;
-
-        int marks[][][] = new int[sizeX][equalPart][equalPart];
-
-        int ii = 0;
-        int jj = 0;                 */
-
         if (solve(0,0)) {
             for(int i = 0; i < sizeX; i++) {
                 for(int j = 0; j < sizeY; j++) {
                     sB.tabBoard[i][j] = curr[i][j];
-                    //System.out.print(curr[i][j] + "\t");
-                } //System.out.println();
+                }
             }
-            //System.out.println(sB.toString()+"\n\n\n");
         } else {
             System.out.println("impossible");
         }
 
-
-
-/*        for (int z = 0; z < sizeX; z+=equalPart) {
-            do {
-                for (int i = sizeX; i < equalPart; i++) {
-                    for (int j = sizeY - sizeX + z; j < equalPart - sizeX + z; j++) {
-                        //System.out.print(sB.tabBoard[i][j] + "\t");
-                        marks[ind][ii][jj] = sB.tabBoard[i][j];
-                        jj++;
-                    }
-                    jj = 0;
-                    ii++;
-                }
-                ii = 0;
-                ind++;
-                equalPartRow = equalPart;
-                equalPartCol = equalPart;
-                equalPart += (int)Math.sqrt(sizeX);
-            } while (sizeX >= equalPart);
-            equalPartRow = 0;
-            equalPartCol = 0;
-            equalPart = (int)Math.sqrt(sizeX);
-
-        }
-
-
-
-        for(int i=0; i<sizeX; i++) {
-
-            System.out.println("[" + i + "] = ");
-
-            for (int j = 0; j < equalPart; j++) {
-                for (int k = 0; k < equalPart; k++) {
-
-                    System.out.print(marks[i][j][k] + "\t");
-
-                }
-                System.out.println();
-            }
-            System.out.println("\n");
-        }                               */
-
-
-
     }
 
     public static boolean solve(int x, int y) {
-        if (sB.tabBoard[x][y] == -1) {
+        if (sB.tabBoard[x][y] == 0) {
             for(int i = 1; i <= sizeX; i++) {
                 if (can_insert(x, y, i)) {
                     curr[x][y] = i;
                     if (next(x, y)) return true;
                 }
-            } curr[x][y] = -1; return false;
+            } curr[x][y] = 0; return false;
         } return next(x, y);
     }
 
@@ -131,19 +69,6 @@ public class SudokuGame {
         if( !checkNumber(x, y, value, tab) ) {
             sB.setValue(x, y, value);
             checkNumber(x, y, value, tab);
-//            System.out.println(sB.toString());
-
-/*            System.out.println("CHECK START!");
-
-            for (int i = 0; i < sizeX; i++) {
-                for (int j = 0; j < sizeY; j++) {
-                    System.out.print(sB.tabBoard[i][j]);
-                }
-                System.out.println();
-            }
-
-            System.out.println("CHECK END!");               */
-
         } else {
             System.out.println("Please give other number because this number is already in this column or row or block!\n\n");
         }
@@ -169,189 +94,219 @@ public class SudokuGame {
             }
         }
 
-
-
         int equalPart = (int)Math.sqrt(sizeX);
         int ind = 0;
-        int equalPartRow = 0;
-        int equalPartCol = 0;
 
         int tab3[][][] = new int[sizeX][equalPart][equalPart];
 
         int ii = 0;
         int jj = 0;
 
-
-
-/*        System.out.println("CHECK START111!");
-
-        for (int i = 0; i < sizeX; i++) {
-            for (int j = 0; j < sizeY; j++) {
-                System.out.print(sB.tabBoard[i][j]);
-            }
-            System.out.println();
-        }
-
-        System.out.println("CHECK END111!");                */
-
-
-
         for (int z = 0; z < sizeX; z+=equalPart) {
             do {
                 for (int i = sizeX; i < equalPart; i++) {
                     for (int j = sizeY - sizeX + z; j < equalPart - sizeX + z; j++) {
-                        //System.out.print(curr[i][j] + "\t");
                         tab3[ind][ii][jj] = tab[i][j];
                         jj++;
                     }
                     jj = 0;
                     ii++;
                 }
-//                System.out.println();
                 ii = 0;
                 ind++;
-                equalPartRow = equalPart;
-                equalPartCol = equalPart;
                 equalPart += (int)Math.sqrt(sizeX);
             } while (sizeX >= equalPart);
-            equalPartRow = 0;
-            equalPartCol = 0;
             equalPart = (int)Math.sqrt(sizeX);
 
         }
 
-
-/*        System.out.println("CHECK START222!");
-
-        for (int i = 0; i < sizeX; i++) {
-            for (int j = 0; j < sizeY; j++) {
-                System.out.print(sB.tabBoard[i][j]);
-            }
-            System.out.println();
-        }
-
-        System.out.println("CHECK END222!");            */
-
-
-
-/*        for(int i=0; i<sizeX; i++) {
-
-            System.out.println("[" + i + "] = ");
-
-            for (int j = 0; j < equalPart; j++) {
-                for (int k = 0; k < equalPart; k++) {
-
-                    System.out.print(tab3[i][j][k] + "\t");
-
-                }
-                System.out.println();
-            }
-            System.out.println("\n");
-        }               */
-
-
-
-/*        System.out.println("CHECK START333!");
-
-        for (int i = 0; i < sizeX; i++) {
-            for (int j = 0; j < sizeY; j++) {
-                System.out.print(sB.tabBoard[i][j]);
-            }
-            System.out.println();
-        }
-
-        System.out.println("CHECK END333!");                */
-
-
-
-/*        for( int i = 0; i < sizeX; i++ ) {
-            for( int j = 0; j < sizeY; j++ ) {
-                System.out.print(sB.tabBoard[i][j]);
-            }
-            System.out.println();
-        }                       */
-
-
-
-
-/*        int equalPart = (int)Math.sqrt(row);
-        int ind = 0;
-        int equalPartRow = 0;
-        int equalPartCol = 0;
-
-        int marks[][][] = new int[row][equalPart][equalPart];
-
-        int ii = 0;
-        int jj = 0;
-
-        for (int z = 0; z < row; z+=equalPart) {
-            do {
-                for (int i = row; i < equalPart; i++) {
-                    for (int j = column - row + z; j < equalPart - row + z; j++) {
-                        System.out.print(sB.tabBoard[i][j] + "\t");
-                        //marks[ind][ii][jj] = sB.tabBoard[i][j];
-                        jj++;
-                    }
-                    jj = 0;
-                    ii++;
-                }
-                ii = 0;
-                ind++;
-                equalPartRow = equalPart;
-                equalPartCol = equalPart;
-                equalPart += (int)Math.sqrt(row);
-            } while (row >= equalPart);
-            equalPartRow = 0;
-            equalPartCol = 0;
-            equalPart = (int)Math.sqrt(row);
-        }                                   */
-
-/*        for(int i=0; i<row; i++) {
-
-            System.out.println("[" + i + "] = ");
-
-            for (int j = 0; j < equalPart; j++) {
-                for (int k = 0; k < equalPart; k++) {
-
-                    System.out.print(marks[i][j][k] + "\t");
-
-                }
-                System.out.println();
-            }
-            System.out.println("\n");
-        }                   */
-
-
-
-
-
-/*        int[][][] board = new int[sizeX][sizeX][sizeX];
-        double blockRow = Math.sqrt(row);
-        double blockColumn = Math.sqrt(column);
-
-        for(int z = 0; z < (int)blockRow; z++) {
-            for (int i = z*(int)blockRow; i < (int)blockRow; i++) {
-                for (int j = z*(int)blockColumn; j < (int)blockColumn; j++) {
-                    board[z][i][j] = sB.tabBoard[i][j];
-                }
-            }
-        }
-
-        for(int z = 0; z < (int)blockRow; z++) {
-            for (int i = z*(int)blockRow; i < (int)blockRow; i++) {
-                for (int j = z*(int)blockColumn; j < (int)blockColumn; j++) {
-                    System.out.print(board[z][i][j] + " ");
-                }
-                System.out.println();
-            }
-            System.out.println("\n\n\n");
-        }                       */
-
         return check;
+
     }
 
-    int[][] returnArray() {
-        return curr;
+    public static void play() {
+
+        ArrayList<Integer> partLists = new ArrayList<>();
+        ArrayList<Integer> helpList = new ArrayList<>();
+        boolean checkListXY = false;
+        int countNumberPartLists = 0;
+        int numberSizeRow = 0;
+        int numberSizeCol = 0;
+        Scanner scannerSizeRow = new Scanner(System.in);
+        char inputSign = 0;
+        Scanner scannerInputChar = new Scanner(System.in);
+        Scanner scannerInputCharYN = new Scanner(System.in);
+        boolean boolWord = false;
+
+        System.out.println("Remember - size must be a number whose square root will return an integer and contain at least 4!");
+        System.out.println("Example size of board: ");
+        System.out.println("size of board: 4\t->\tsize of block: 2 X 2");
+        System.out.println("size of board: 9\t->\tsize of block: 3 X 3");
+        System.out.println("size of board: 16\t->\tsize of block: 4 X 4");
+
+        SudokuBoard sB = null;
+
+        Scanner scannerCordinateX = new Scanner(System.in);
+        Scanner scannerCordinateY = new Scanner(System.in);
+        Scanner scannerCordinateValue = new Scanner(System.in);
+        int intCordinateX = 0;
+        int intCordinateY = 0;
+        int intCordinateValue = 0;
+        int checkCurrentCountNativeOne = 0;
+        int checkNumberRowColumnBlock = 0;
+        int[][] tabPreviousState;
+        boolean helpBool = false;
+        int sqrtRow = 0;
+
+        System.out.println("Input size rows, columns and blocks in board: ");
+        numberSizeRow = scannerSizeRow.nextInt();
+        sqrtRow = (int)Math.sqrt(numberSizeRow);
+        if ( (sqrtRow * sqrtRow) == numberSizeRow ) {
+            numberSizeCol = numberSizeRow;
+            helpBool = false;
+        } else helpBool = true;
+        while ( helpBool ) {
+            System.out.println("Please input size rows, columns and blocks in board: ");
+            numberSizeRow = scannerSizeRow.nextInt();
+            sqrtRow = (int)Math.sqrt(numberSizeRow);
+            if ( (sqrtRow * sqrtRow) == numberSizeRow ) {
+                numberSizeCol = numberSizeRow;
+                helpBool = false;
+            }
+        }
+
+        sB = new SudokuBoard(numberSizeRow, numberSizeCol);
+        tabPreviousState = new int[numberSizeRow][numberSizeCol];
+
+        while( !boolWord ) {
+            System.out.println("Choose one from below options:");
+            System.out.println("Input the char \"e\" and press key \"ENTER\" - if you want to exit game!");
+            System.out.println("Input the char \"s\" and press key \"ENTER\" - program to solve sudoku and display solution!");
+            System.out.println("Input the char \"v\" and press key \"ENTER\" - you set the value to a board cell!");
+            inputSign = scannerInputChar.next().charAt(0);
+            SudokuGame sG = new SudokuGame(sB, numberSizeRow, numberSizeCol);
+            if( inputSign == 115 ) {
+                boolWord = true;
+                sG.playGame();
+                System.out.println(sB.toString());
+                System.out.println("GAME HAS END!!!");
+            } else if( inputSign == 101 ) {
+                System.out.println("If you want exit the game?");
+                System.out.println("Input the char y or n!");
+                inputSign = scannerInputCharYN.next().charAt(0);
+                if ( inputSign != 110 && inputSign != 121 ) helpBool = true;
+                if( inputSign == 121 ) {
+                    boolWord = true;
+                    System.out.println("YOU ARE OUT OF THE GAME!!!");
+                } else if( inputSign == 110 ) boolWord = false;
+                else {
+                    while ( helpBool ) {
+                        System.out.println("Please input the char y or n!");
+                        inputSign = scannerInputCharYN.next().charAt(0);
+                        if ( inputSign == 110 || inputSign == 121 ) {
+                            if( inputSign == 121 ) {
+                                boolWord = true;
+                                System.out.println("YOU ARE OUT OF THE GAME!!!");
+                            } else if( inputSign == 110 ) boolWord = false;
+                            helpBool = false;
+                        }
+                    }
+                }
+            } else if( inputSign == 118 ) {
+                System.out.println("Input coordinate X: ");
+                intCordinateX = scannerCordinateX.nextInt();
+                if ( intCordinateX < 0 || intCordinateX >= numberSizeRow ) helpBool = true;
+                while ( helpBool ) {
+                    System.out.println("Please correct input coordinate X from range [0, " + (numberSizeRow - 1) + "] !");
+                    System.out.println("Input coordinate X: ");
+                    intCordinateX = scannerCordinateX.nextInt();
+                    if ( intCordinateX >= 0 && intCordinateX < numberSizeRow ) helpBool = false;
+                }
+                System.out.println("Input coordinate Y: ");
+                intCordinateY = scannerCordinateY.nextInt();
+                if ( intCordinateY < 0 || intCordinateY >= numberSizeRow ) helpBool = true;
+                while ( helpBool ) {
+                    System.out.println("Please correct input coordinate Y from range [0, " + (numberSizeCol - 1) + "] !");
+                    System.out.println("Input coordinate Y: ");
+                    intCordinateY = scannerCordinateY.nextInt();
+                    if ( intCordinateY >= 0 && intCordinateY < numberSizeCol ) helpBool = false;
+                }
+                System.out.println("Input value: ");
+                intCordinateValue = scannerCordinateValue.nextInt();
+                if ( intCordinateValue < 1 || intCordinateValue > numberSizeRow ) helpBool = true;
+                while ( helpBool ) {
+                    System.out.println("Please correct input value from range [0, " + numberSizeRow + "] !");
+                    System.out.println("Input value: ");
+                    intCordinateValue = scannerCordinateValue.nextInt();
+                    if ( intCordinateValue >= 1 && intCordinateValue <= numberSizeRow ) helpBool = false;
+                }
+                checkNumberRowColumnBlock = 0;
+                countNumberPartLists = 0;
+
+                if( sB.tabBoard[intCordinateX][intCordinateY] == intCordinateValue ) {
+                    System.out.println("This number already appears in this cell. Please input other number!");
+                } else {
+                    for(int i=0; i<numberSizeRow; i++) {
+                        for(int j=0; j<numberSizeCol; j++) {
+                            if ( sB.tabBoard[intCordinateX][j] == intCordinateValue ||
+                                    sB.tabBoard[i][intCordinateY] == intCordinateValue ) {
+                                checkNumberRowColumnBlock = 1;
+                            } else if ( sB.tabBoard[intCordinateX][j] != intCordinateValue &&
+                                    sB.tabBoard[i][intCordinateY] != intCordinateValue ) {
+                                checkNumberRowColumnBlock = 0;
+                            }
+                        }
+                    }
+                }
+
+                for(int u = 0; u < numberSizeRow; u += sqrtRow) {
+                    for (int z = 0; z < numberSizeRow; z += sqrtRow) {
+                        for (int x = 0 + u; x < sqrtRow + u; x++) {
+                            for (int y = 0 + z; y < sqrtRow + z; y++) {
+                                partLists.add(sB.tabBoard[x][y]);
+                                if ( x == intCordinateX && y == intCordinateY ) {
+                                    checkListXY = true;
+                                }
+                            }
+                        }
+                        if ( checkListXY == true ) {
+                            helpList.clear();
+                            for (int number : partLists) {
+                                helpList.add(number);
+                            }
+                            checkListXY = false;
+                            countNumberPartLists = Collections.frequency(helpList, intCordinateValue);
+                        }
+                        partLists.clear();
+                    }
+                }
+
+                if( countNumberPartLists > 0 ) {
+                    checkNumberRowColumnBlock = 1;
+                }
+
+                if( checkNumberRowColumnBlock == 1 ) {
+                    sB.tabBoard[intCordinateX][intCordinateY] = tabPreviousState[intCordinateX][intCordinateY];
+                    System.out.println("This number already appears across the row or column or block on this board!");
+                } else if( checkNumberRowColumnBlock == 0 ) {
+                    sG.insertValueToBoard(intCordinateX, intCordinateY, intCordinateValue, sB.tabBoard);
+                    tabPreviousState = sB.returnArray();
+                }
+
+                System.out.println(sB.toString());
+
+                checkCurrentCountNativeOne = (int) Stream.of(sB.tabBoard)
+                        .flatMapToInt(cells-> IntStream.range(0, cells.length)
+                                .filter(i2 -> cells[i2] == 0))
+                        .count();
+
+                if( checkCurrentCountNativeOne == 0 ) {
+                    boolWord = true;
+                    System.out.println("GAME HAS END!!!");
+                }
+            }
+        }
+
     }
 
 }
